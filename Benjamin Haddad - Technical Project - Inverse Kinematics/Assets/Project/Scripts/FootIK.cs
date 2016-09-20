@@ -12,11 +12,11 @@ public class FootIK : MonoBehaviour
 
     public Transform leftFoot;
     public Vector3 leftFootOffset;
-    private float leftFootWeight;
+    private float leftFootWeight = 0.0f;
 
     public Transform rightFoot;
     public Vector3 rightFootOffset;
-    private float rightFootWeight;
+    private float rightFootWeight = 0.0f;
 	
 	private Vector3 leftFootPosition;
 	private Vector3 rightFootPosition;
@@ -137,7 +137,7 @@ public class FootIK : MonoBehaviour
 			//Debug.DrawLine(hit.point, hit.point + hit.normal, Color.yellow);
 
 			myAnimator.SetIKPosition(AvatarIKGoal.LeftFoot, hit.point + leftFootOffset);
-			myAnimator.SetIKRotation(AvatarIKGoal.LeftFoot, Quaternion.LookRotation(Vector3.Exclude(hit.normal, leftFoot.forward),  hit.normal));
+			myAnimator.SetIKRotation(AvatarIKGoal.LeftFoot, Quaternion.LookRotation(Vector3.ProjectOnPlane(leftFoot.forward, hit.normal),  hit.normal));
 
             leftFootPosition = hit.point;
 		}				
@@ -149,7 +149,7 @@ public class FootIK : MonoBehaviour
 			//Debug.DrawLine(hit.point, hit.point + hit.normal, Color.green);
 
 			myAnimator.SetIKPosition(AvatarIKGoal.RightFoot,hit.point + rightFootOffset);
-			myAnimator.SetIKRotation(AvatarIKGoal.RightFoot,Quaternion.LookRotation(Vector3.Exclude(hit.normal, rightFoot.forward),  hit.normal));
+			myAnimator.SetIKRotation(AvatarIKGoal.RightFoot,Quaternion.LookRotation(Vector3.ProjectOnPlane(rightFoot.forward, hit.normal),  hit.normal));
 
             rightFootPosition = hit.point;
 		}
@@ -166,7 +166,7 @@ public class FootIK : MonoBehaviour
 			//Debug.DrawLine(hit.point, hit.point + hit.normal, Color.yellow);
 
 			myAnimator.SetIKPosition(AvatarIKGoal.LeftFoot, hit.point + leftFootOffset);
-			myAnimator.SetIKRotation(AvatarIKGoal.LeftFoot,Quaternion.LookRotation(Vector3.Exclude(hit.normal, leftFoot.forward),  hit.normal));
+			myAnimator.SetIKRotation(AvatarIKGoal.LeftFoot,Quaternion.LookRotation(Vector3.ProjectOnPlane(leftFoot.forward, hit.normal),  hit.normal));
 
 			leftFootPosition = hit.point;
 		}
@@ -178,7 +178,7 @@ public class FootIK : MonoBehaviour
 			//Debug.DrawLine(hit.point, hit.point + hit.normal, Color.green);
 
 			myAnimator.SetIKPosition(AvatarIKGoal.RightFoot,hit.point + rightFootOffset);
-			myAnimator.SetIKRotation(AvatarIKGoal.RightFoot,Quaternion.LookRotation(Vector3.Exclude(hit.normal, rightFoot.forward),  hit.normal));
+			myAnimator.SetIKRotation(AvatarIKGoal.RightFoot,Quaternion.LookRotation(Vector3.ProjectOnPlane(rightFoot.forward, hit.normal),  hit.normal));
 
 			rightFootPosition = hit.point;
 		}				

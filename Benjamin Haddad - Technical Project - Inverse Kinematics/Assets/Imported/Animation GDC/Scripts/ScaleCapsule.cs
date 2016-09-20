@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class ScaleCapsule : MonoBehaviour {
 
@@ -60,7 +61,7 @@ public class ScaleCapsule : MonoBehaviour {
 			if (hasJumped && state.IsName("Base Layer.Idle"))
 			{
 				hasJumped = false;
-				Application.LoadLevel(0);
+                SceneManager.LoadScene(0);
 			}
 			
 			if(applyScale)

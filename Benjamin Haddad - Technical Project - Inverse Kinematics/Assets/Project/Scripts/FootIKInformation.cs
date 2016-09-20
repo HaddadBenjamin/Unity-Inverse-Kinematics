@@ -2,7 +2,6 @@
 
 using System.Collections;
 
-
 public class FootIKInformation : ABaseIKInformation
 {
     #region Unity Behaviour

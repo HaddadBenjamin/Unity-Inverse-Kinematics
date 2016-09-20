@@ -14,7 +14,7 @@ public abstract class ABaseIKInformation : MonoBehaviour
     private float cameraDistanceUp;
     private float lightIntensity;
     [SerializeField]
-    private Light light;
+    private Light directionalLight;
     #endregion
 
     #region Properties
@@ -84,7 +84,7 @@ public abstract class ABaseIKInformation : MonoBehaviour
             lightIntensity = value;
 
             if (lightIntensity != tmp)
-                light.intensity = lightIntensity;
+                directionalLight.intensity = lightIntensity;
         }
     }
     #endregion
@@ -109,7 +109,7 @@ public abstract class ABaseIKInformation : MonoBehaviour
 
         GUILayout.BeginHorizontal();
         GUILayout.Label("Distance de la caméra par rapport au joueur.");
-        this.CameraDistanceAway = GUILayout.HorizontalSlider(this.CameraDistanceAway, 0.5f, 20.0f);
+        this.CameraDistanceAway = GUILayout.HorizontalSlider(this.CameraDistanceAway, -20.0f, 20.0f);
         GUILayout.EndHorizontal();
         GUILayout.BeginHorizontal();
         GUILayout.Label("Distance up de la caméra par rapport au joueur.");
@@ -120,7 +120,7 @@ public abstract class ABaseIKInformation : MonoBehaviour
         GUILayout.Label("Intensité de la lumière, ce paramètre peut vous permettre de mieux voir les effets de l'IK.");
         this.LightIntensity = GUILayout.HorizontalSlider(this.LightIntensity, 0.0f, 8.0f);
         GUILayout.EndHorizontal();
-    }
+    } 
     #endregion
 
     #region Unity Behaviour
@@ -141,7 +141,7 @@ public abstract class ABaseIKInformation : MonoBehaviour
 
         this.CameraDistanceAway = this.myCamera.distanceAway;
         this.CameraDistanceUp = this.myCamera.distanceUp;
-        this.LightIntensity = this.light.intensity;
+        this.LightIntensity = this.directionalLight.intensity;
     }
     #endregion
 }

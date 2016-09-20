@@ -509,7 +509,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8f8d2ef94975d4ebb8995c2ebe18da88, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11400000, guid: 8f8d2ef94975d4ebb8995c2ebe18da88, type: 2}
@@ -1081,7 +1081,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ea234f81f56be5468295fb0c74d8057, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  light: {fileID: 1611142685}
+  directionalLight: {fileID: 1611142685}
 --- !u!114 &388711608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1154,7 +1154,7 @@ Transform:
   - {fileID: 864733931}
   - {fileID: 262777532}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!1 &391340665
 GameObject:
   m_ObjectHideFlags: 0
@@ -2514,8 +2514,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 488ea79d27a362c4286f9979075ea7ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distanceAway: 3
-  distanceUp: 1
+  distanceAway: 2
+  distanceUp: 0.5
   smooth: 3
 --- !u!1 &956863335
 GameObject:
@@ -4300,7 +4300,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 45, y: 45, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 1
 --- !u!108 &1611142685
 Light:
   m_ObjectHideFlags: 0
@@ -4684,7 +4684,7 @@ Transform:
   - {fileID: 983284141}
   - {fileID: 1207352624}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
 --- !u!1 &1770665906
 GameObject:
   m_ObjectHideFlags: 0

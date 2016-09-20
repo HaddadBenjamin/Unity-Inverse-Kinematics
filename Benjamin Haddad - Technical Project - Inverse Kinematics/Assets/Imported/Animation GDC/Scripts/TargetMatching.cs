@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class TargetMatching : MonoBehaviour
 {
@@ -48,9 +49,9 @@ public class TargetMatching : MonoBehaviour
 			if (hasJumped && state.normalizedTime > 1.2)
 			{
 				hasJumped = false;
-				Application.LoadLevel(0);
-			}
-		}
+                SceneManager.LoadScene(0);
+            }
+        }
 	
 	}
 }
