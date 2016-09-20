@@ -1,32 +1,37 @@
 using UnityEngine;
 using System.Collections;
 
-/// <summary>
-/// Third person camera.
-/// </summary>
 public class ThirdPersonCamera : MonoBehaviour
 {
-	public float distanceAway;			
+    #region Fields
+    public float distanceAway;			
 	public float distanceUp;			
-	public float smooth;				// how smooth the camera movement is
-		
-	private Vector3 m_TargetPosition;		// the position the camera is trying to be in)
-	
-	Transform follow;
-	
-	void Start(){
-		follow = GameObject.FindWithTag ("Player").transform;	
-	}
+	public float distanceRight;
+    public float smoothSpeed;
+
+    private Vector3 m_TargetPosition;
+
+    private Transform target;
+    private Transform myTransform;
+    #endregion
+
+    #region Unity Behaviour
+    void Start()
+    {
+		this.target = GameObject.FindWithTag ("Player").transform;
+        this.myTransform = transform;
+    }
 	
 	void LateUpdate ()
 	{
-		// setting the target position to be the correct offset from the 
-		m_TargetPosition = follow.position + Vector3.up * distanceUp - follow.forward * distanceAway;
-		
-		// making a smooth transition between it's current position and the position it wants to be in
-		transform.position = Vector3.Lerp(transform.position, m_TargetPosition, Time.deltaTime * smooth);
-		
-		// make sure the camera is looking the right way!
-		transform.LookAt(follow);
+		m_TargetPosition = this.target.position + 
+                           Vector3.up * this.distanceUp +
+                           Vector3.right * this.distanceRight -
+                           this.target.forward * this.distanceAway;
+
+        this.myTransform.position = Vector3.Lerp(this.myTransform.position, m_TargetPosition, Time.deltaTime * this.smoothSpeed);
+
+        this.myTransform.LookAt(target);
 	}
+    #endregion
 }

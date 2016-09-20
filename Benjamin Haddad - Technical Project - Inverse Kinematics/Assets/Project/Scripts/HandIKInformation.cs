@@ -20,7 +20,7 @@ public class HandIKInformation : ABaseIKInformation
     {
         base.GUIInformation();
 
-        GUILayout.Label("Activer / désactiver l'IK pour tenir l'objet en fade de votre personnage.");
+        GUILayout.Label("Activer / désactiver l'IK pour tenir l'objet en face de votre personnage.");
     }
     #endregion
 }

@@ -15,7 +15,7 @@ public abstract class ABaseIKInformation : MonoBehaviour
     private float lightIntensity;
     [SerializeField]
     private Light directionalLight;
-    private readonly Rect beginArea = new Rect(10.0f, 10.0f, 560.0f, 800.0f);
+    private readonly Rect beginArea = new Rect(10.0f, 10.0f, 560.0f, 250.0f);
     #endregion
 
     #region Properties
@@ -95,7 +95,7 @@ public abstract class ABaseIKInformation : MonoBehaviour
     {
         this.EnableIK = GUILayout.Toggle(this.EnableIK, "Activer / désactiver l'IK.");
 
-        GUILayout.BeginHorizontal("box");
+        GUILayout.BeginHorizontal();
         GUILayout.Label("Charger une scène.");
         if (GUILayout.Button("La scène courante"))
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -107,7 +107,7 @@ public abstract class ABaseIKInformation : MonoBehaviour
             SceneManager.LoadScene("Look IK");
         GUILayout.EndHorizontal();
 
-        GUILayout.Label("Afin de le rendre plus visible vous pouvez modifier les paramètres de la caméra ci-dessous.");
+        GUILayout.Label("Afin de rendre plus visible le comportement des animations IK, vous pouvez modifier les paramètres ci-dessous.");
 
         GUILayout.BeginHorizontal();
         GUILayout.Label("Distance de la caméra par rapport au joueur.");
@@ -119,7 +119,7 @@ public abstract class ABaseIKInformation : MonoBehaviour
         GUILayout.EndHorizontal();
 
         GUILayout.BeginHorizontal();
-        GUILayout.Label("Intensité de la lumière, ce paramètre permet de mieux voir les effets de l'IK.");
+        GUILayout.Label("Intensité de la lumière.");
         this.LightIntensity = GUILayout.HorizontalSlider(this.LightIntensity, 0.0f, 2.0f);
         GUILayout.EndHorizontal();
     } 
@@ -129,7 +129,7 @@ public abstract class ABaseIKInformation : MonoBehaviour
 
     void OnGUI()
     {
-        GUILayout.BeginArea(this.beginArea);
+        GUILayout.BeginArea(this.beginArea, GUIContent.none);
 
         GUI.color = Color.green;
         this.GUIInformation();
