@@ -15,6 +15,7 @@ public abstract class ABaseIKInformation : MonoBehaviour
     private float lightIntensity;
     [SerializeField]
     private Light directionalLight;
+    private readonly Rect beginArea = new Rect(10.0f, 10.0f, 560.0f, 800.0f);
     #endregion
 
     #region Properties
@@ -99,7 +100,7 @@ public abstract class ABaseIKInformation : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         if (GUILayout.Button("Foot IK"))
             SceneManager.LoadScene("Foot IK");
-        if (GUILayout.Button("Hand IK <b>BUILD SETTINGS MISSING</b>"))
+        if (GUILayout.Button("Hand IK"))
             SceneManager.LoadScene("Hand IK");
         if (GUILayout.Button("Look IK <b>BUILD SETTINGS MISSING</b>"))
             SceneManager.LoadScene("Look IK");
@@ -113,12 +114,12 @@ public abstract class ABaseIKInformation : MonoBehaviour
         GUILayout.EndHorizontal();
         GUILayout.BeginHorizontal();
         GUILayout.Label("Distance up de la caméra par rapport au joueur.");
-        this.CameraDistanceUp = GUILayout.HorizontalSlider(this.CameraDistanceUp, 0.05f, 15.0f);
+        this.CameraDistanceUp = GUILayout.HorizontalSlider(this.CameraDistanceUp, 0.05f, 15.0f, GUILayout.Width(100.0f));
         GUILayout.EndHorizontal();
 
         GUILayout.BeginHorizontal();
-        GUILayout.Label("Intensité de la lumière, ce paramètre peut vous permettre de mieux voir les effets de l'IK.");
-        this.LightIntensity = GUILayout.HorizontalSlider(this.LightIntensity, 0.0f, 8.0f);
+        GUILayout.Label("Intensité de la lumière, ce paramètre permet de mieux voir les effets de l'IK.");
+        this.LightIntensity = GUILayout.HorizontalSlider(this.LightIntensity, 0.0f, 2.0f);
         GUILayout.EndHorizontal();
     } 
     #endregion
@@ -127,7 +128,12 @@ public abstract class ABaseIKInformation : MonoBehaviour
 
     void OnGUI()
     {
+        GUILayout.BeginArea(this.beginArea);
+
+        GUI.color = Color.green;
         this.GUIInformation();
+
+        GUILayout.EndArea();
     }
     #endregion
 

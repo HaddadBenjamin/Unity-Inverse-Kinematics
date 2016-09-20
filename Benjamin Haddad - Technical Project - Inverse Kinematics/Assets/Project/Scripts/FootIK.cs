@@ -78,35 +78,36 @@ public class FootIK : MonoBehaviour
 		{	
 			if (EnableIK)
 			{
-				if (transformWeigth != 1.0f)
-                {
-					transformWeigth = Mathf.Lerp(transformWeigth, 1.0f, Time.deltaTime * moveColliderCenterAndHeightSpeedAndTransformWeightSpeed);
 
-					if (transformWeigth >= 0.99)
-						transformWeigth = 1.0f;
-				}
-				if (myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Idle") && 
-                    myCapsuleCollider.attachedRigidbody.velocity.magnitude < 0.1f)
+                if (transformWeigth != 1.0f)
                 {
-					myAnimator.SetIKPositionWeight(AvatarIKGoal.LeftFoot,transformWeigth);
-					myAnimator.SetIKRotationWeight(AvatarIKGoal.LeftFoot,transformWeigth);
-					myAnimator.SetIKPositionWeight(AvatarIKGoal.RightFoot,transformWeigth);
-					myAnimator.SetIKRotationWeight(AvatarIKGoal.RightFoot,transformWeigth);
+                    transformWeigth = Mathf.Lerp(transformWeigth, 1.0f, Time.deltaTime * moveColliderCenterAndHeightSpeedAndTransformWeightSpeed);
 
-					IdleIK();
-				}
-				else if (myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Walk") || 
-                         myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Run"))
+                    if (transformWeigth >= 0.99)
+                        transformWeigth = 1.0f;
+                }
+                if (myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Idle") &&
+                                myCapsuleCollider.attachedRigidbody.velocity.magnitude < 0.1f)
                 {
-					myAnimator.SetIKPositionWeight(AvatarIKGoal.LeftFoot,transformWeigth * leftFootWeight);
-					myAnimator.SetIKRotationWeight(AvatarIKGoal.LeftFoot,transformWeigth * leftFootWeight);
-					myAnimator.SetIKPositionWeight(AvatarIKGoal.RightFoot,transformWeigth * rightFootWeight);
-					myAnimator.SetIKRotationWeight(AvatarIKGoal.RightFoot,transformWeigth * rightFootWeight);
+                    myAnimator.SetIKPositionWeight(AvatarIKGoal.LeftFoot, transformWeigth);
+                    myAnimator.SetIKRotationWeight(AvatarIKGoal.LeftFoot, transformWeigth);
+                    myAnimator.SetIKPositionWeight(AvatarIKGoal.RightFoot, transformWeigth);
+                    myAnimator.SetIKRotationWeight(AvatarIKGoal.RightFoot, transformWeigth);
 
-					WalkRunIK();
-				}
-			}
-			else
+                    IdleIK();
+                }
+                else if (myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Walk") ||
+                                     myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Run"))
+                {
+                    myAnimator.SetIKPositionWeight(AvatarIKGoal.LeftFoot, transformWeigth * leftFootWeight);
+                    myAnimator.SetIKRotationWeight(AvatarIKGoal.LeftFoot, transformWeigth * leftFootWeight);
+                    myAnimator.SetIKPositionWeight(AvatarIKGoal.RightFoot, transformWeigth * rightFootWeight);
+                    myAnimator.SetIKRotationWeight(AvatarIKGoal.RightFoot, transformWeigth * rightFootWeight);
+
+                    WalkRunIK();
+                }
+            }
+            else
 			{	
 				if (transformWeigth != 0.0f)
                 {
