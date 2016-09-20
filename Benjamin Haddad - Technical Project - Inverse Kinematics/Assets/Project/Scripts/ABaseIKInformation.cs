@@ -96,13 +96,14 @@ public abstract class ABaseIKInformation : MonoBehaviour
         this.EnableIK = GUILayout.Toggle(this.EnableIK, "Activer / désactiver l'IK.");
 
         GUILayout.BeginHorizontal("box");
-        if (GUILayout.Button("Recharger la scène courante"))
+        GUILayout.Label("Charger une scène.");
+        if (GUILayout.Button("La scène courante"))
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        if (GUILayout.Button("Foot IK"))
+        if (GUILayout.Button("IK des pieds"))
             SceneManager.LoadScene("Foot IK");
-        if (GUILayout.Button("Hand IK"))
+        if (GUILayout.Button("IK des mains"))
             SceneManager.LoadScene("Hand IK");
-        if (GUILayout.Button("Look IK <b>BUILD SETTINGS MISSING</b>"))
+        if (GUILayout.Button("IK du regard"))
             SceneManager.LoadScene("Look IK");
         GUILayout.EndHorizontal();
 
