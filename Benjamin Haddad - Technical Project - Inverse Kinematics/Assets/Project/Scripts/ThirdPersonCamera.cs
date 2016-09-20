@@ -6,7 +6,7 @@ public class ThirdPersonCamera : MonoBehaviour
     #region Fields
     public float distanceAway;			
 	public float distanceUp;			
-	public float distanceRight;
+	public float distanceRight = 0.0f;
     public float smoothSpeed;
 
     private Vector3 m_TargetPosition;

@@ -2000,7 +2000,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distanceAway: -2.5
   distanceUp: 2.5838983
-  smooth: 3
+  distanceRight: 0
+  smoothSpeed: 3
 --- !u!1 &956863335
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,6 +12,7 @@ public abstract class ABaseIKInformation : MonoBehaviour
     public Action<bool> EnableIKListener;
     private float cameraDistanceAway;
     private float cameraDistanceUp;
+    private float cameraDistanceRight;
     private float lightIntensity;
     [SerializeField]
     private Light directionalLight;
@@ -88,6 +89,24 @@ public abstract class ABaseIKInformation : MonoBehaviour
                 directionalLight.intensity = lightIntensity;
         }
     }
+
+    public float CameraDistanceRight
+    {
+        get
+        {
+            return cameraDistanceRight;
+        }
+
+        set
+        {
+            float tmp = cameraDistanceRight;
+
+            cameraDistanceRight = value;
+
+            if (tmp != cameraDistanceRight)
+                this.myCamera.distanceRight = cameraDistanceRight;
+        }
+    }
     #endregion
 
     #region Virtual Behaviour
@@ -116,6 +135,10 @@ public abstract class ABaseIKInformation : MonoBehaviour
         GUILayout.BeginHorizontal();
         GUILayout.Label("Distance up de la caméra par rapport au joueur.");
         this.CameraDistanceUp = GUILayout.HorizontalSlider(this.CameraDistanceUp, 0.05f, 15.0f, GUILayout.Width(100.0f));
+        GUILayout.EndHorizontal();
+        GUILayout.BeginHorizontal();
+        GUILayout.Label("Distance right de la caméra par rapport au joueur.");
+        this.CameraDistanceRight = GUILayout.HorizontalSlider(this.CameraDistanceRight, -10.0f, 10.0f, GUILayout.Width(100.0f));
         GUILayout.EndHorizontal();
 
         GUILayout.BeginHorizontal();
@@ -148,6 +171,7 @@ public abstract class ABaseIKInformation : MonoBehaviour
 
         this.CameraDistanceAway = this.myCamera.distanceAway;
         this.CameraDistanceUp = this.myCamera.distanceUp;
+        this.CameraDistanceRight = this.myCamera.distanceRight;
         this.LightIntensity = this.directionalLight.intensity;
     }
     #endregion
