@@ -3,7 +3,7 @@ using System;
   
 [RequireComponent(typeof(Animator))]  
 [RequireComponent(typeof(CapsuleCollider))]  
-public class FootIK : AIK
+public sealed class FootIK : AIK
 {
     #region Fields
     public LayerMask raycastLayerMask;
@@ -19,8 +19,6 @@ public class FootIK : AIK
 	private Vector3 leftFootPosition;
 	private Vector3 rightFootPosition;
 
-    protected Animator myAnimator;
-
     private CapsuleCollider myCapsuleCollider;
 	private Vector3 newColliderCenter;
 	private float newColliderHeight;
@@ -32,7 +30,6 @@ public class FootIK : AIK
     #region Unity Behaviour
     void Start () 
 	{
-		myAnimator = GetComponent<Animator>();
 		myCapsuleCollider = GetComponent<CapsuleCollider>();
 
 		newColliderCenter = myCapsuleCollider.center;
@@ -43,9 +40,9 @@ public class FootIK : AIK
     {
         if (EnableIK)
         {
-            if (myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Idle"))
+            if (base.MyAnimator.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Idle"))
                 IdleUpdateCollider();
-            else if (myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Walk") || myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Run"))
+            else if (base.MyAnimator.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Walk") || base.MyAnimator.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Run"))
                 WalkRunUpdateCollider();
         }
         else
@@ -66,23 +63,23 @@ public class FootIK : AIK
             if (transformWeigth >= 0.99)
                 transformWeigth = 1.0f;
         }
-        if (myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Idle") &&
+        if (base.MyAnimator.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Idle") &&
                         myCapsuleCollider.attachedRigidbody.velocity.magnitude < 0.1f)
         {
-            myAnimator.SetIKPositionWeight(AvatarIKGoal.LeftFoot, transformWeigth);
-            myAnimator.SetIKRotationWeight(AvatarIKGoal.LeftFoot, transformWeigth);
-            myAnimator.SetIKPositionWeight(AvatarIKGoal.RightFoot, transformWeigth);
-            myAnimator.SetIKRotationWeight(AvatarIKGoal.RightFoot, transformWeigth);
+            base.MyAnimator.SetIKPositionWeight(AvatarIKGoal.LeftFoot, transformWeigth);
+            base.MyAnimator.SetIKRotationWeight(AvatarIKGoal.LeftFoot, transformWeigth);
+            base.MyAnimator.SetIKPositionWeight(AvatarIKGoal.RightFoot, transformWeigth);
+            base.MyAnimator.SetIKRotationWeight(AvatarIKGoal.RightFoot, transformWeigth);
 
             IdleIK();
         }
-        else if (myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Walk") ||
-                             myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Run"))
+        else if (base.MyAnimator.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Walk") ||
+                 base.MyAnimator.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Run"))
         {
-            myAnimator.SetIKPositionWeight(AvatarIKGoal.LeftFoot, transformWeigth * leftFootWeight);
-            myAnimator.SetIKRotationWeight(AvatarIKGoal.LeftFoot, transformWeigth * leftFootWeight);
-            myAnimator.SetIKPositionWeight(AvatarIKGoal.RightFoot, transformWeigth * rightFootWeight);
-            myAnimator.SetIKRotationWeight(AvatarIKGoal.RightFoot, transformWeigth * rightFootWeight);
+            base.MyAnimator.SetIKPositionWeight(AvatarIKGoal.LeftFoot, transformWeigth * leftFootWeight);
+            base.MyAnimator.SetIKRotationWeight(AvatarIKGoal.LeftFoot, transformWeigth * leftFootWeight);
+            base.MyAnimator.SetIKPositionWeight(AvatarIKGoal.RightFoot, transformWeigth * rightFootWeight);
+            base.MyAnimator.SetIKRotationWeight(AvatarIKGoal.RightFoot, transformWeigth * rightFootWeight);
 
             WalkRunIK();
         }
@@ -98,10 +95,10 @@ public class FootIK : AIK
                 transformWeigth = 0.0f;
         }
 
-        myAnimator.SetIKPositionWeight(AvatarIKGoal.LeftFoot, transformWeigth);
-        myAnimator.SetIKRotationWeight(AvatarIKGoal.LeftFoot, transformWeigth);
-        myAnimator.SetIKPositionWeight(AvatarIKGoal.RightFoot, transformWeigth);
-        myAnimator.SetIKRotationWeight(AvatarIKGoal.RightFoot, transformWeigth);
+        base.MyAnimator.SetIKPositionWeight(AvatarIKGoal.LeftFoot, transformWeigth);
+        base.MyAnimator.SetIKRotationWeight(AvatarIKGoal.LeftFoot, transformWeigth);
+        base.MyAnimator.SetIKPositionWeight(AvatarIKGoal.RightFoot, transformWeigth);
+        base.MyAnimator.SetIKRotationWeight(AvatarIKGoal.RightFoot, transformWeigth);
     }
     #endregion
 
@@ -110,26 +107,26 @@ public class FootIK : AIK
     {
 		RaycastHit hit;
 
-		leftFootPosition = myAnimator.GetIKPosition(AvatarIKGoal.LeftFoot);
+		leftFootPosition = base.MyAnimator.GetIKPosition(AvatarIKGoal.LeftFoot);
 
 		if (Physics.Raycast(leftFootPosition + Vector3.up, Vector3.down, out hit, 2.0f, raycastLayerMask))
 		{
 			//Debug.DrawLine(hit.point, hit.point + hit.normal, Color.yellow);
 
-			myAnimator.SetIKPosition(AvatarIKGoal.LeftFoot, hit.point + leftFootOffset);
-			myAnimator.SetIKRotation(AvatarIKGoal.LeftFoot, Quaternion.LookRotation(Vector3.ProjectOnPlane(leftFoot.forward, hit.normal),  hit.normal));
+			base.MyAnimator.SetIKPosition(AvatarIKGoal.LeftFoot, hit.point + leftFootOffset);
+			base.MyAnimator.SetIKRotation(AvatarIKGoal.LeftFoot, Quaternion.LookRotation(Vector3.ProjectOnPlane(leftFoot.forward, hit.normal),  hit.normal));
 
             leftFootPosition = hit.point;
 		}				
 
-		rightFootPosition = myAnimator.GetIKPosition(AvatarIKGoal.RightFoot);
+		rightFootPosition = base.MyAnimator.GetIKPosition(AvatarIKGoal.RightFoot);
 
 		if (Physics.Raycast(rightFootPosition + Vector3.up, Vector3.down, out hit, 2.0f, raycastLayerMask))
 		{
 			//Debug.DrawLine(hit.point, hit.point + hit.normal, Color.green);
 
-			myAnimator.SetIKPosition(AvatarIKGoal.RightFoot,hit.point + rightFootOffset);
-			myAnimator.SetIKRotation(AvatarIKGoal.RightFoot,Quaternion.LookRotation(Vector3.ProjectOnPlane(rightFoot.forward, hit.normal),  hit.normal));
+			base.MyAnimator.SetIKPosition(AvatarIKGoal.RightFoot,hit.point + rightFootOffset);
+			base.MyAnimator.SetIKRotation(AvatarIKGoal.RightFoot,Quaternion.LookRotation(Vector3.ProjectOnPlane(rightFoot.forward, hit.normal),  hit.normal));
 
             rightFootPosition = hit.point;
 		}
@@ -139,26 +136,26 @@ public class FootIK : AIK
     {
 		RaycastHit hit;
 
-		leftFootPosition = myAnimator.GetIKPosition(AvatarIKGoal.LeftFoot);
+		leftFootPosition = base.MyAnimator.GetIKPosition(AvatarIKGoal.LeftFoot);
 
 		if (Physics.Raycast(leftFootPosition + Vector3.up, Vector3.down, out hit, 2.0f, raycastLayerMask))
 		{
 			//Debug.DrawLine(hit.point, hit.point + hit.normal, Color.yellow);
 
-			myAnimator.SetIKPosition(AvatarIKGoal.LeftFoot, hit.point + leftFootOffset);
-			myAnimator.SetIKRotation(AvatarIKGoal.LeftFoot,Quaternion.LookRotation(Vector3.ProjectOnPlane(leftFoot.forward, hit.normal),  hit.normal));
+			base.MyAnimator.SetIKPosition(AvatarIKGoal.LeftFoot, hit.point + leftFootOffset);
+			base.MyAnimator.SetIKRotation(AvatarIKGoal.LeftFoot,Quaternion.LookRotation(Vector3.ProjectOnPlane(leftFoot.forward, hit.normal),  hit.normal));
 
 			leftFootPosition = hit.point;
 		}
         			
-		rightFootPosition = myAnimator.GetIKPosition(AvatarIKGoal.RightFoot);
+		rightFootPosition = base.MyAnimator.GetIKPosition(AvatarIKGoal.RightFoot);
 
 		if (Physics.Raycast(rightFootPosition + Vector3.up, Vector3.down, out hit, 2.0f, raycastLayerMask))
 		{
 			//Debug.DrawLine(hit.point, hit.point + hit.normal, Color.green);
 
-			myAnimator.SetIKPosition(AvatarIKGoal.RightFoot,hit.point + rightFootOffset);
-			myAnimator.SetIKRotation(AvatarIKGoal.RightFoot,Quaternion.LookRotation(Vector3.ProjectOnPlane(rightFoot.forward, hit.normal),  hit.normal));
+			base.MyAnimator.SetIKPosition(AvatarIKGoal.RightFoot,hit.point + rightFootOffset);
+			base.MyAnimator.SetIKRotation(AvatarIKGoal.RightFoot,Quaternion.LookRotation(Vector3.ProjectOnPlane(rightFoot.forward, hit.normal),  hit.normal));
 
 			rightFootPosition = hit.point;
 		}				

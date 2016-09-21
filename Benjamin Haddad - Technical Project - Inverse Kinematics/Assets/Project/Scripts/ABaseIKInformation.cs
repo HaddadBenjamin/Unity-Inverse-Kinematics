@@ -7,7 +7,7 @@ using System.Collections;
 public abstract class ABaseIKInformation : MonoBehaviour
 {
     #region Fields
-    private AIK AIK;
+    private AIK aIK;
     private ThirdPersonCamera myCamera;
     private bool enableIK = true;
     private float cameraDistanceAway;
@@ -16,7 +16,7 @@ public abstract class ABaseIKInformation : MonoBehaviour
     private float lightIntensity;
     [SerializeField]
     private Light directionalLight;
-    private readonly Rect beginArea = new Rect(10.0f, 10.0f, 560.0f, 250.0f);
+    private readonly Rect beginArea = new Rect(10.0f, 10.0f, 560.0f, 500.0f);
     #endregion
 
     #region Properties
@@ -49,7 +49,7 @@ public abstract class ABaseIKInformation : MonoBehaviour
             cameraDistanceAway = value;
 
             if (tmp != cameraDistanceAway)
-                this.myCamera.distanceAway = cameraDistanceAway;
+                this.MyCamera.distanceAway = cameraDistanceAway;
         }
     }
 
@@ -67,7 +67,7 @@ public abstract class ABaseIKInformation : MonoBehaviour
             cameraDistanceUp = value;
 
             if (tmp != cameraDistanceUp)
-                this.myCamera.distanceUp = cameraDistanceUp;
+                this.MyCamera.distanceUp = cameraDistanceUp;
         }
     }
 
@@ -103,7 +103,33 @@ public abstract class ABaseIKInformation : MonoBehaviour
             cameraDistanceRight = value;
 
             if (tmp != cameraDistanceRight)
-                this.myCamera.distanceRight = cameraDistanceRight;
+                this.MyCamera.distanceRight = cameraDistanceRight;
+        }
+    }
+
+    public ThirdPersonCamera MyCamera
+    {
+        get
+        {
+            return myCamera;
+        }
+
+        set
+        {
+            myCamera = value;
+        }
+    }
+
+    public AIK AIK
+    {
+        get
+        {
+            return aIK;
+        }
+
+        set
+        {
+            aIK = value;
         }
     }
     #endregion
@@ -154,11 +180,11 @@ public abstract class ABaseIKInformation : MonoBehaviour
 
         this.EnableIK = this.AIK.EnableIK;
 
-        this.myCamera = Camera.main.GetComponent<ThirdPersonCamera>();
+        this.MyCamera = Camera.main.GetComponent<ThirdPersonCamera>();
 
-        this.CameraDistanceAway = this.myCamera.distanceAway;
-        this.CameraDistanceUp = this.myCamera.distanceUp;
-        this.CameraDistanceRight = this.myCamera.distanceRight;
+        this.CameraDistanceAway = this.MyCamera.distanceAway;
+        this.CameraDistanceUp = this.MyCamera.distanceUp;
+        this.CameraDistanceRight = this.MyCamera.distanceRight;
         this.LightIntensity = this.directionalLight.intensity;
     }
 

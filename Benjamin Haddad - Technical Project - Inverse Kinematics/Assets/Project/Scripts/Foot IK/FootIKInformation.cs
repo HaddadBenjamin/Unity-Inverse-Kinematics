@@ -2,7 +2,7 @@
 
 using System.Collections;
 
-public class FootIKInformation : ABaseIKInformation
+public sealed class FootIKInformation : ABaseIKInformation
 {
     #region Override Behaviour
     protected override void GUIInformation()

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class LookSphereMovement : MonoBehaviour
+public class BallMovement : MonoBehaviour
 {
     #region Fields
     [SerializeField]
@@ -60,8 +60,5 @@ public class LookSphereMovement : MonoBehaviour
 
         this.myTransform.position = new Vector3(positionX, positionY, this.initialPosition.z);
     }
-    #endregion
-
-    #region Intern Behaviour
     #endregion
 }

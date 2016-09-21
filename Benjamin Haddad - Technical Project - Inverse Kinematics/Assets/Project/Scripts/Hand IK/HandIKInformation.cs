@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class HandIKInformation : ABaseIKInformation
+public sealed class HandIKInformation : ABaseIKInformation
 {
     #region Override Behaviour
     protected override void GUIInformation()

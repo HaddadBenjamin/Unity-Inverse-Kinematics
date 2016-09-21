@@ -6,6 +6,7 @@ public abstract class AIK : MonoBehaviour
     #region Fields
     [SerializeField]
     private bool enableIK = true;
+    private Animator myAnimator;
     #endregion
 
     #region Properties
@@ -21,9 +22,27 @@ public abstract class AIK : MonoBehaviour
             enableIK = value;
         }
     }
+
+    protected Animator MyAnimator
+    {
+        get
+        {
+            return myAnimator;
+        }
+
+        set
+        {
+            myAnimator = value;
+        }
+    }
     #endregion
 
     #region Unity Behaviour
+    void Awake()
+    {
+        this.MyAnimator = GetComponent<Animator>();
+    }
+
     void OnAnimatorIK()
     {
         if (this.EnableIK)
