@@ -16,7 +16,7 @@ public abstract class ABaseIKInformation : MonoBehaviour
     private float lightIntensity;
     [SerializeField]
     private Light directionalLight;
-    private readonly Rect beginArea = new Rect(10.0f, 10.0f, 560.0f, 500.0f);
+    private readonly Rect beginArea = new Rect(10.0f, 10.0f, 700.0f, 500.0f);
     #endregion
 
     #region Properties
@@ -149,6 +149,8 @@ public abstract class ABaseIKInformation : MonoBehaviour
             SceneManager.LoadScene("Hand IK");
         if (GUILayout.Button("IK du regard"))
             SceneManager.LoadScene("Look IK");
+        if (GUILayout.Button("Mon propre système de IK"))
+            SceneManager.LoadScene("My Own IK System");
         GUILayout.EndHorizontal();
 
         GUILayout.Label("Afin de rendre plus visible le comportement des animations IK, vous pouvez modifier les paramètres ci-dessous.");
