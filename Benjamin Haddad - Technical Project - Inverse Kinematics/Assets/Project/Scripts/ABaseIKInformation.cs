@@ -144,24 +144,11 @@ public abstract class ABaseIKInformation : MonoBehaviour
         GUILayout.Label("Intensité de la lumière.");
         this.LightIntensity = GUILayout.HorizontalSlider(this.LightIntensity, 0.0f, 2.0f);
         GUILayout.EndHorizontal();
-    } 
-    #endregion
-
-    #region Unity Behaviour
-
-    void OnGUI()
-    {
-        GUILayout.BeginArea(this.beginArea, GUIContent.none);
-
-        GUI.color = Color.green;
-        this.GUIInformation();
-
-        GUILayout.EndArea();
     }
     #endregion
 
-    #region Protected Behaviour
-    protected void Initialize()
+    #region Unity Behaviour
+    void Awake()
     {
         this.AIK = GetComponent<AIK>();
 
@@ -173,6 +160,16 @@ public abstract class ABaseIKInformation : MonoBehaviour
         this.CameraDistanceUp = this.myCamera.distanceUp;
         this.CameraDistanceRight = this.myCamera.distanceRight;
         this.LightIntensity = this.directionalLight.intensity;
+    }
+
+    void OnGUI()
+    {
+        GUILayout.BeginArea(this.beginArea, GUIContent.none);
+
+        GUI.color = Color.green;
+        this.GUIInformation();
+
+        GUILayout.EndArea();
     }
     #endregion
 }

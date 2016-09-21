@@ -5,7 +5,7 @@ public abstract class AIK : MonoBehaviour
 {
     #region Fields
     [SerializeField]
-    private bool enableIK = false;
+    private bool enableIK = true;
     #endregion
 
     #region Properties
@@ -21,5 +21,27 @@ public abstract class AIK : MonoBehaviour
             enableIK = value;
         }
     }
+    #endregion
+
+    #region Unity Behaviour
+    void OnAnimatorIK()
+    {
+        if (this.EnableIK)
+            this.IKBehaviour();
+        else
+            this.ResetIK();
+    }
+    #endregion
+
+    #region Abstract Behaviour
+    /// <summary>
+    /// Comportement de l'IK.
+    /// </summary>
+    protected abstract void IKBehaviour();
+
+    /// <summary>
+    /// Permet de réinitialiser le modèle de sorte qu'il n'utilise plus son IK.
+    /// </summary>
+    protected abstract void ResetIK();
     #endregion
 }

@@ -3,13 +3,6 @@ using System.Collections;
 
 public class HandIKInformation : ABaseIKInformation
 {
-    #region Unity Behaviour
-    void Awake()
-    {
-        base.Initialize();
-    }
-    #endregion
-
     #region Override Behaviour
     protected override void GUIInformation()
     {

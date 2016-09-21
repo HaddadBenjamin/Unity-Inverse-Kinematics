@@ -54,59 +54,55 @@ public class FootIK : AIK
             myCapsuleCollider.height = Mathf.Lerp(myCapsuleCollider.height, newColliderHeight, Time.deltaTime * moveColliderCenterAndHeightSpeedAndTransformWeightSpeed);
         }
     }
+    #endregion
 
-    void OnAnimatorIK(int layerIndex)
-	{	
-		if (myAnimator)
-		{	
-			if (EnableIK)
-			{
+    #region Override Behaviour
+    protected override void IKBehaviour()
+    {
+        if (transformWeigth != 1.0f)
+        {
+            transformWeigth = Mathf.Lerp(transformWeigth, 1.0f, Time.deltaTime * moveColliderCenterAndHeightSpeedAndTransformWeightSpeed);
 
-                if (transformWeigth != 1.0f)
-                {
-                    transformWeigth = Mathf.Lerp(transformWeigth, 1.0f, Time.deltaTime * moveColliderCenterAndHeightSpeedAndTransformWeightSpeed);
+            if (transformWeigth >= 0.99)
+                transformWeigth = 1.0f;
+        }
+        if (myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Idle") &&
+                        myCapsuleCollider.attachedRigidbody.velocity.magnitude < 0.1f)
+        {
+            myAnimator.SetIKPositionWeight(AvatarIKGoal.LeftFoot, transformWeigth);
+            myAnimator.SetIKRotationWeight(AvatarIKGoal.LeftFoot, transformWeigth);
+            myAnimator.SetIKPositionWeight(AvatarIKGoal.RightFoot, transformWeigth);
+            myAnimator.SetIKRotationWeight(AvatarIKGoal.RightFoot, transformWeigth);
 
-                    if (transformWeigth >= 0.99)
-                        transformWeigth = 1.0f;
-                }
-                if (myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Idle") &&
-                                myCapsuleCollider.attachedRigidbody.velocity.magnitude < 0.1f)
-                {
-                    myAnimator.SetIKPositionWeight(AvatarIKGoal.LeftFoot, transformWeigth);
-                    myAnimator.SetIKRotationWeight(AvatarIKGoal.LeftFoot, transformWeigth);
-                    myAnimator.SetIKPositionWeight(AvatarIKGoal.RightFoot, transformWeigth);
-                    myAnimator.SetIKRotationWeight(AvatarIKGoal.RightFoot, transformWeigth);
+            IdleIK();
+        }
+        else if (myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Walk") ||
+                             myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Run"))
+        {
+            myAnimator.SetIKPositionWeight(AvatarIKGoal.LeftFoot, transformWeigth * leftFootWeight);
+            myAnimator.SetIKRotationWeight(AvatarIKGoal.LeftFoot, transformWeigth * leftFootWeight);
+            myAnimator.SetIKPositionWeight(AvatarIKGoal.RightFoot, transformWeigth * rightFootWeight);
+            myAnimator.SetIKRotationWeight(AvatarIKGoal.RightFoot, transformWeigth * rightFootWeight);
 
-                    IdleIK();
-                }
-                else if (myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Walk") ||
-                                     myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Run"))
-                {
-                    myAnimator.SetIKPositionWeight(AvatarIKGoal.LeftFoot, transformWeigth * leftFootWeight);
-                    myAnimator.SetIKRotationWeight(AvatarIKGoal.LeftFoot, transformWeigth * leftFootWeight);
-                    myAnimator.SetIKPositionWeight(AvatarIKGoal.RightFoot, transformWeigth * rightFootWeight);
-                    myAnimator.SetIKRotationWeight(AvatarIKGoal.RightFoot, transformWeigth * rightFootWeight);
+            WalkRunIK();
+        }
+    }
 
-                    WalkRunIK();
-                }
-            }
-            else
-			{	
-				if (transformWeigth != 0.0f)
-                {
-					transformWeigth = Mathf.Lerp(transformWeigth, 0.0f, Time.deltaTime * moveColliderCenterAndHeightSpeedAndTransformWeightSpeed);
+    protected override void ResetIK()
+    {
+        if (transformWeigth != 0.0f)
+        {
+            transformWeigth = Mathf.Lerp(transformWeigth, 0.0f, Time.deltaTime * moveColliderCenterAndHeightSpeedAndTransformWeightSpeed);
 
-					if (transformWeigth <= 0.01)
-						transformWeigth = 0.0f;
-				}
+            if (transformWeigth <= 0.01)
+                transformWeigth = 0.0f;
+        }
 
-				myAnimator.SetIKPositionWeight(AvatarIKGoal.LeftFoot,transformWeigth);
-				myAnimator.SetIKRotationWeight(AvatarIKGoal.LeftFoot,transformWeigth);
-				myAnimator.SetIKPositionWeight(AvatarIKGoal.RightFoot,transformWeigth);
-				myAnimator.SetIKRotationWeight(AvatarIKGoal.RightFoot,transformWeigth);
-			}
-		}
-	}
+        myAnimator.SetIKPositionWeight(AvatarIKGoal.LeftFoot, transformWeigth);
+        myAnimator.SetIKRotationWeight(AvatarIKGoal.LeftFoot, transformWeigth);
+        myAnimator.SetIKPositionWeight(AvatarIKGoal.RightFoot, transformWeigth);
+        myAnimator.SetIKRotationWeight(AvatarIKGoal.RightFoot, transformWeigth);
+    }
     #endregion
 
     #region Intern Behaviour
