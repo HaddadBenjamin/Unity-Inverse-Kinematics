@@ -6,11 +6,6 @@ public class HandIKInformation : ABaseIKInformation
     #region Unity Behaviour
     void Awake()
     {
-        base.EnableIKListener += delegate (bool input)
-        {
-            GetComponent<HandIK>().EnableIK = input;
-        };
-
         base.Initialize();
     }
     #endregion

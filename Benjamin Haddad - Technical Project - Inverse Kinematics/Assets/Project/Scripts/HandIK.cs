@@ -3,30 +3,14 @@ using System.Collections;
 using System;
 
 [RequireComponent(typeof(Animator))]
-public class HandIK : MonoBehaviour
+public class HandIK : AIK
 {
     #region Fields
-    private bool enableIK;
     private Animator myAnimator;
     [SerializeField]
     private Transform rightHandPlaceHolder = null;
     [SerializeField]
     private Transform leftHandPlaceHolder = null;
-    #endregion
-
-    #region Properties
-    public bool EnableIK
-    {
-        get
-        {
-            return enableIK;
-        }
-
-        set
-        {
-            enableIK = value;
-        }
-    }
     #endregion
 
     #region Unity Behaviour
@@ -39,7 +23,7 @@ public class HandIK : MonoBehaviour
     {
         if (this.myAnimator)
         {
-            if (this.enableIK)
+            if (base.EnableIK)
             {
                 this.myAnimator.SetIKPositionWeight(AvatarIKGoal.RightHand, 1.0f);
                 this.myAnimator.SetIKRotationWeight(AvatarIKGoal.RightHand, 1.0f);

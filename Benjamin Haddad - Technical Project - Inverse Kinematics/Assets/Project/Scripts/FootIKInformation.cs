@@ -7,11 +7,6 @@ public class FootIKInformation : ABaseIKInformation
     #region Unity Behaviour
     void Awake()
     {
-        base.EnableIKListener += delegate (bool input)
-        {
-            GetComponent<FootIK>().EnableIK = input;
-        };
-
         base.Initialize();
     }
     #endregion

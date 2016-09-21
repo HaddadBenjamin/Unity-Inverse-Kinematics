@@ -3,11 +3,9 @@ using System;
   
 [RequireComponent(typeof(Animator))]  
 [RequireComponent(typeof(CapsuleCollider))]  
-public class FootIK : MonoBehaviour
+public class FootIK : AIK
 {
     #region Fields
-    [SerializeField]
-    private bool enableIK = false;
     public LayerMask raycastLayerMask;
 
     public Transform leftFoot;
@@ -29,21 +27,6 @@ public class FootIK : MonoBehaviour
 
     private float transformWeigth = 1.0f;
     private const float moveColliderCenterAndHeightSpeedAndTransformWeightSpeed = 10;
-    #endregion
-
-    #region Properties
-    public bool EnableIK
-    {
-        get
-        {
-            return enableIK;
-        }
-
-        set
-        {
-            enableIK = value;
-        }
-    }
     #endregion
 
     #region Unity Behaviour

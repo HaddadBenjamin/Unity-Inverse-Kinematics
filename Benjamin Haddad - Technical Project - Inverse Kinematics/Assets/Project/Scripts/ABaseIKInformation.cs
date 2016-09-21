@@ -7,9 +7,9 @@ using System.Collections;
 public abstract class ABaseIKInformation : MonoBehaviour
 {
     #region Fields
+    private AIK AIK;
     private ThirdPersonCamera myCamera;
     private bool enableIK = true;
-    public Action<bool> EnableIKListener;
     private float cameraDistanceAway;
     private float cameraDistanceUp;
     private float cameraDistanceRight;
@@ -29,10 +29,9 @@ public abstract class ABaseIKInformation : MonoBehaviour
 
         set
         {
-            enableIK = value;
-
-            if (null != this.EnableIKListener)
-                this.EnableIKListener(this.EnableIK);
+            this.AIK.EnableIK = 
+                 enableIK = 
+                 value;
         }
     }
 
@@ -164,8 +163,9 @@ public abstract class ABaseIKInformation : MonoBehaviour
     #region Protected Behaviour
     protected void Initialize()
     {
-        // Permet d'appeler son listener si il y en a.
-        this.EnableIK = this.EnableIK;
+        this.AIK = GetComponent<AIK>();
+
+        this.EnableIK = this.AIK.EnableIK;
 
         this.myCamera = Camera.main.GetComponent<ThirdPersonCamera>();
 

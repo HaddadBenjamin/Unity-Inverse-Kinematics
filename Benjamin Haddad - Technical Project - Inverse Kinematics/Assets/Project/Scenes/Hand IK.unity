@@ -983,6 +983,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0f9b009ecb45264cacaffbf4d6e4fac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enableIK: 1
   rightHandPlaceHolder: {fileID: 1455369079}
   leftHandPlaceHolder: {fileID: 1469762988}
 --- !u!114 &388711607
