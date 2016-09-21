@@ -30,10 +30,10 @@ public sealed class FootIK : AIK
     #region Unity Behaviour
     void Start () 
 	{
-		myCapsuleCollider = GetComponent<CapsuleCollider>();
+        this.myCapsuleCollider = GetComponent<CapsuleCollider>();
 
-		newColliderCenter = myCapsuleCollider.center;
-		newColliderHeight = myCapsuleCollider.height;
+		this.newColliderCenter = this.myCapsuleCollider.center;
+        this.newColliderHeight = this.myCapsuleCollider.height;
 	}
 
     void Update()
@@ -41,14 +41,22 @@ public sealed class FootIK : AIK
         if (EnableIK)
         {
             if (base.MyAnimator.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Idle"))
-                IdleUpdateCollider();
-            else if (base.MyAnimator.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Walk") || base.MyAnimator.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Run"))
-                WalkRunUpdateCollider();
+                this.IdleUpdateCollider();
+            else if (base.MyAnimator.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Walk") ||
+                     base.MyAnimator.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Run"))
+                this.WalkRunUpdateCollider();
         }
         else
         {
-            myCapsuleCollider.center = new Vector3(0, Mathf.Lerp(myCapsuleCollider.center.y, newColliderCenter.y, Time.deltaTime * moveColliderCenterAndHeightSpeedAndTransformWeightSpeed), 0);
-            myCapsuleCollider.height = Mathf.Lerp(myCapsuleCollider.height, newColliderHeight, Time.deltaTime * moveColliderCenterAndHeightSpeedAndTransformWeightSpeed);
+            this.myCapsuleCollider.center = new Vector3(
+                0.0f,
+                Mathf.Lerp(this.myCapsuleCollider.center.y, this.newColliderCenter.y, Time.deltaTime * moveColliderCenterAndHeightSpeedAndTransformWeightSpeed), 
+                0.0f);
+
+            this.myCapsuleCollider.height = Mathf.Lerp(
+                this.myCapsuleCollider.height, 
+                this.newColliderHeight, 
+                Time.deltaTime * moveColliderCenterAndHeightSpeedAndTransformWeightSpeed);
         }
     }
     #endregion
@@ -56,49 +64,49 @@ public sealed class FootIK : AIK
     #region Override Behaviour
     protected override void IKBehaviour()
     {
-        if (transformWeigth != 1.0f)
+        if (this.transformWeigth != 1.0f)
         {
-            transformWeigth = Mathf.Lerp(transformWeigth, 1.0f, Time.deltaTime * moveColliderCenterAndHeightSpeedAndTransformWeightSpeed);
+            this.transformWeigth = Mathf.Lerp(this.transformWeigth, 1.0f, Time.deltaTime * moveColliderCenterAndHeightSpeedAndTransformWeightSpeed);
 
-            if (transformWeigth >= 0.99)
-                transformWeigth = 1.0f;
+            if (this.transformWeigth >= 0.99)
+                this.transformWeigth = 1.0f;
         }
         if (base.MyAnimator.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Idle") &&
-                        myCapsuleCollider.attachedRigidbody.velocity.magnitude < 0.1f)
+            this.myCapsuleCollider.attachedRigidbody.velocity.magnitude < 0.1f)
         {
-            base.MyAnimator.SetIKPositionWeight(AvatarIKGoal.LeftFoot, transformWeigth);
-            base.MyAnimator.SetIKRotationWeight(AvatarIKGoal.LeftFoot, transformWeigth);
-            base.MyAnimator.SetIKPositionWeight(AvatarIKGoal.RightFoot, transformWeigth);
-            base.MyAnimator.SetIKRotationWeight(AvatarIKGoal.RightFoot, transformWeigth);
+            base.MyAnimator.SetIKPositionWeight(AvatarIKGoal.LeftFoot, this.transformWeigth);
+            base.MyAnimator.SetIKRotationWeight(AvatarIKGoal.LeftFoot, this.transformWeigth);
+            base.MyAnimator.SetIKPositionWeight(AvatarIKGoal.RightFoot, this.transformWeigth);
+            base.MyAnimator.SetIKRotationWeight(AvatarIKGoal.RightFoot, this.transformWeigth);
 
-            IdleIK();
+            this.IdleIK();
         }
         else if (base.MyAnimator.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Walk") ||
                  base.MyAnimator.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Run"))
         {
-            base.MyAnimator.SetIKPositionWeight(AvatarIKGoal.LeftFoot, transformWeigth * leftFootWeight);
-            base.MyAnimator.SetIKRotationWeight(AvatarIKGoal.LeftFoot, transformWeigth * leftFootWeight);
-            base.MyAnimator.SetIKPositionWeight(AvatarIKGoal.RightFoot, transformWeigth * rightFootWeight);
-            base.MyAnimator.SetIKRotationWeight(AvatarIKGoal.RightFoot, transformWeigth * rightFootWeight);
+            base.MyAnimator.SetIKPositionWeight(AvatarIKGoal.LeftFoot, this.transformWeigth * this.leftFootWeight);
+            base.MyAnimator.SetIKRotationWeight(AvatarIKGoal.LeftFoot, this.transformWeigth * this.leftFootWeight);
+            base.MyAnimator.SetIKPositionWeight(AvatarIKGoal.RightFoot, this.transformWeigth * this.rightFootWeight);
+            base.MyAnimator.SetIKRotationWeight(AvatarIKGoal.RightFoot, this.transformWeigth * this.rightFootWeight);
 
-            WalkRunIK();
+            this.WalkRunIK();
         }
     }
 
     protected override void ResetIK()
     {
-        if (transformWeigth != 0.0f)
+        if (this.transformWeigth != 0.0f)
         {
-            transformWeigth = Mathf.Lerp(transformWeigth, 0.0f, Time.deltaTime * moveColliderCenterAndHeightSpeedAndTransformWeightSpeed);
+            this.transformWeigth = Mathf.Lerp(this.transformWeigth, 0.0f, Time.deltaTime * moveColliderCenterAndHeightSpeedAndTransformWeightSpeed);
 
-            if (transformWeigth <= 0.01)
-                transformWeigth = 0.0f;
+            if (this.transformWeigth <= 0.01)
+                this.transformWeigth = 0.0f;
         }
 
-        base.MyAnimator.SetIKPositionWeight(AvatarIKGoal.LeftFoot, transformWeigth);
-        base.MyAnimator.SetIKRotationWeight(AvatarIKGoal.LeftFoot, transformWeigth);
-        base.MyAnimator.SetIKPositionWeight(AvatarIKGoal.RightFoot, transformWeigth);
-        base.MyAnimator.SetIKRotationWeight(AvatarIKGoal.RightFoot, transformWeigth);
+        base.MyAnimator.SetIKPositionWeight(AvatarIKGoal.LeftFoot, this.transformWeigth);
+        base.MyAnimator.SetIKRotationWeight(AvatarIKGoal.LeftFoot, this.transformWeigth);
+        base.MyAnimator.SetIKPositionWeight(AvatarIKGoal.RightFoot, this.transformWeigth);
+        base.MyAnimator.SetIKRotationWeight(AvatarIKGoal.RightFoot, this.transformWeigth);
     }
     #endregion
 
@@ -107,28 +115,28 @@ public sealed class FootIK : AIK
     {
 		RaycastHit hit;
 
-		leftFootPosition = base.MyAnimator.GetIKPosition(AvatarIKGoal.LeftFoot);
+        this.leftFootPosition = base.MyAnimator.GetIKPosition(AvatarIKGoal.LeftFoot);
 
-		if (Physics.Raycast(leftFootPosition + Vector3.up, Vector3.down, out hit, 2.0f, raycastLayerMask))
+		if (Physics.Raycast(this.leftFootPosition + Vector3.up, Vector3.down, out hit, 2.0f, this.raycastLayerMask))
 		{
 			//Debug.DrawLine(hit.point, hit.point + hit.normal, Color.yellow);
 
-			base.MyAnimator.SetIKPosition(AvatarIKGoal.LeftFoot, hit.point + leftFootOffset);
-			base.MyAnimator.SetIKRotation(AvatarIKGoal.LeftFoot, Quaternion.LookRotation(Vector3.ProjectOnPlane(leftFoot.forward, hit.normal),  hit.normal));
+			base.MyAnimator.SetIKPosition(AvatarIKGoal.LeftFoot, hit.point + this.leftFootOffset);
+			base.MyAnimator.SetIKRotation(AvatarIKGoal.LeftFoot, Quaternion.LookRotation(Vector3.ProjectOnPlane(this.leftFoot.forward, hit.normal),  hit.normal));
 
-            leftFootPosition = hit.point;
-		}				
+            this.leftFootPosition = hit.point;
+		}
 
-		rightFootPosition = base.MyAnimator.GetIKPosition(AvatarIKGoal.RightFoot);
+        this.rightFootPosition = base.MyAnimator.GetIKPosition(AvatarIKGoal.RightFoot);
 
-		if (Physics.Raycast(rightFootPosition + Vector3.up, Vector3.down, out hit, 2.0f, raycastLayerMask))
+		if (Physics.Raycast(this.rightFootPosition + Vector3.up, Vector3.down, out hit, 2.0f, this.raycastLayerMask))
 		{
 			//Debug.DrawLine(hit.point, hit.point + hit.normal, Color.green);
 
-			base.MyAnimator.SetIKPosition(AvatarIKGoal.RightFoot,hit.point + rightFootOffset);
-			base.MyAnimator.SetIKRotation(AvatarIKGoal.RightFoot,Quaternion.LookRotation(Vector3.ProjectOnPlane(rightFoot.forward, hit.normal),  hit.normal));
+			base.MyAnimator.SetIKPosition(AvatarIKGoal.RightFoot, hit.point + this.rightFootOffset);
+			base.MyAnimator.SetIKRotation(AvatarIKGoal.RightFoot,Quaternion.LookRotation(Vector3.ProjectOnPlane(this.rightFoot.forward, hit.normal),  hit.normal));
 
-            rightFootPosition = hit.point;
+            this.rightFootPosition = hit.point;
 		}
 	}
 
@@ -136,26 +144,26 @@ public sealed class FootIK : AIK
     {
 		RaycastHit hit;
 
-		leftFootPosition = base.MyAnimator.GetIKPosition(AvatarIKGoal.LeftFoot);
+        this.leftFootPosition = base.MyAnimator.GetIKPosition(AvatarIKGoal.LeftFoot);
 
-		if (Physics.Raycast(leftFootPosition + Vector3.up, Vector3.down, out hit, 2.0f, raycastLayerMask))
+		if (Physics.Raycast(this.leftFootPosition + Vector3.up, Vector3.down, out hit, 2.0f, this.raycastLayerMask))
 		{
 			//Debug.DrawLine(hit.point, hit.point + hit.normal, Color.yellow);
 
-			base.MyAnimator.SetIKPosition(AvatarIKGoal.LeftFoot, hit.point + leftFootOffset);
-			base.MyAnimator.SetIKRotation(AvatarIKGoal.LeftFoot,Quaternion.LookRotation(Vector3.ProjectOnPlane(leftFoot.forward, hit.normal),  hit.normal));
+			base.MyAnimator.SetIKPosition(AvatarIKGoal.LeftFoot, hit.point + this.leftFootOffset);
+			base.MyAnimator.SetIKRotation(AvatarIKGoal.LeftFoot, Quaternion.LookRotation(Vector3.ProjectOnPlane(this.leftFoot.forward, hit.normal),  hit.normal));
 
-			leftFootPosition = hit.point;
+            this.leftFootPosition = hit.point;
 		}
-        			
-		rightFootPosition = base.MyAnimator.GetIKPosition(AvatarIKGoal.RightFoot);
 
-		if (Physics.Raycast(rightFootPosition + Vector3.up, Vector3.down, out hit, 2.0f, raycastLayerMask))
+        this.rightFootPosition = base.MyAnimator.GetIKPosition(AvatarIKGoal.RightFoot);
+
+		if (Physics.Raycast(this.rightFootPosition + Vector3.up, Vector3.down, out hit, 2.0f, this.raycastLayerMask))
 		{
 			//Debug.DrawLine(hit.point, hit.point + hit.normal, Color.green);
 
-			base.MyAnimator.SetIKPosition(AvatarIKGoal.RightFoot,hit.point + rightFootOffset);
-			base.MyAnimator.SetIKRotation(AvatarIKGoal.RightFoot,Quaternion.LookRotation(Vector3.ProjectOnPlane(rightFoot.forward, hit.normal),  hit.normal));
+			base.MyAnimator.SetIKPosition(AvatarIKGoal.RightFoot, hit.point + this.rightFootOffset);
+			base.MyAnimator.SetIKRotation(AvatarIKGoal.RightFoot, Quaternion.LookRotation(Vector3.ProjectOnPlane(this.rightFoot.forward, hit.normal),  hit.normal));
 
 			rightFootPosition = hit.point;
 		}				
@@ -163,13 +171,13 @@ public sealed class FootIK : AIK
 	
 	void IdleUpdateCollider () 
 	{	
-		float dif = leftFootPosition.y - rightFootPosition.y;
+		float dif = this.leftFootPosition.y - this.rightFootPosition.y;
 
-		if (dif < 0)
-            dif *= -1;
+		if (dif < 0.0f)
+            dif *= -1.0f;
 
-		myCapsuleCollider.center = new Vector3(0, Mathf.Lerp(myCapsuleCollider.center.y, newColliderCenter.y + dif, Time.deltaTime) ,0);
-		myCapsuleCollider.height = Mathf.Lerp(myCapsuleCollider.height, newColliderHeight - (dif / 2), Time.deltaTime);
+		this.myCapsuleCollider.center = new Vector3(0.0f, Mathf.Lerp(this.myCapsuleCollider.center.y, this.newColliderCenter.y + dif, Time.deltaTime) ,0.0f);
+        this.myCapsuleCollider.height = Mathf.Lerp(this.myCapsuleCollider.height, this.newColliderHeight - (dif / 2), Time.deltaTime);
 	}
 
 	void WalkRunUpdateCollider () 
@@ -178,26 +186,29 @@ public sealed class FootIK : AIK
 		Vector3 myGround = Vector3.zero;
 		Vector3 dif = Vector3.zero;
 
-		if (Physics.Raycast(transform.position + Vector3.up, Vector3.down, out hit, 3.0f, raycastLayerMask))
+		if (Physics.Raycast(transform.position + Vector3.up, Vector3.down, out hit, 3.0f, this.raycastLayerMask))
 			myGround = hit.point;
-		if (Physics.Raycast(transform.position + (((transform.forward * (myCapsuleCollider.radius))) + (myCapsuleCollider.attachedRigidbody.velocity * Time.deltaTime)) + Vector3.up, Vector3.down, out hit, 2.0f, raycastLayerMask))
+		if (Physics.Raycast(transform.position + 
+            (((transform.forward * (this.myCapsuleCollider.radius))) + 
+            (this.myCapsuleCollider.attachedRigidbody.velocity * Time.deltaTime)) + 
+            Vector3.up, Vector3.down, out hit, 2.0f, this.raycastLayerMask))
 		{
             //Debug.DrawLine(transform.position + (((transform.forward * (myCapsuleCollider.radius))) + (myCapsuleCollider.attachedRigidbody.velocity * Time.deltaTime)) + Vector3.up, hit.point, Color.red);
 
             dif = hit.point - myGround;
 
-			if (dif.y < 0)
-                dif *= -1;
+			if (dif.y < 0.0f)
+                dif *= -1.0f;
 		}
 		if (dif.y < 0.5f)
         {
-			myCapsuleCollider.center = new Vector3(0, Mathf.Lerp(myCapsuleCollider.center.y, newColliderCenter.y + dif.y, Time.deltaTime * moveColliderCenterAndHeightSpeedAndTransformWeightSpeed) ,0);
-			myCapsuleCollider.height = Mathf.Lerp(myCapsuleCollider.height, newColliderHeight - (dif.y / 2), Time.deltaTime * moveColliderCenterAndHeightSpeedAndTransformWeightSpeed);
+			this.myCapsuleCollider.center = new Vector3(0.0f, Mathf.Lerp(this.myCapsuleCollider.center.y, this.newColliderCenter.y + dif.y, Time.deltaTime * moveColliderCenterAndHeightSpeedAndTransformWeightSpeed), 0.0f);
+            this.myCapsuleCollider.height = Mathf.Lerp(this.myCapsuleCollider.height, this.newColliderHeight - (dif.y / 2.0f), Time.deltaTime * moveColliderCenterAndHeightSpeedAndTransformWeightSpeed);
 		}
         else
         {
-			myCapsuleCollider.center = new Vector3(0, Mathf.Lerp(myCapsuleCollider.center.y, newColliderCenter.y, Time.deltaTime * moveColliderCenterAndHeightSpeedAndTransformWeightSpeed) ,0);
-			myCapsuleCollider.height = Mathf.Lerp(myCapsuleCollider.height, newColliderHeight, Time.deltaTime * moveColliderCenterAndHeightSpeedAndTransformWeightSpeed);
+			this.myCapsuleCollider.center = new Vector3(0.0f, Mathf.Lerp(this.myCapsuleCollider.center.y, this.newColliderCenter.y, Time.deltaTime * moveColliderCenterAndHeightSpeedAndTransformWeightSpeed), 0.0f);
+            this.myCapsuleCollider.height = Mathf.Lerp(this.myCapsuleCollider.height, this.newColliderHeight, Time.deltaTime * moveColliderCenterAndHeightSpeedAndTransformWeightSpeed);
 		}
 	}
     #endregion
