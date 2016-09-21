@@ -149,8 +149,8 @@ public abstract class ABaseIKInformation : MonoBehaviour
             SceneManager.LoadScene("Hand IK");
         if (GUILayout.Button("IK du regard"))
             SceneManager.LoadScene("Look IK");
-        if (GUILayout.Button("Mon propre système de IK"))
-            SceneManager.LoadScene("My Own IK System");
+        if (GUILayout.Button("IK 3D sans Animator"))
+            SceneManager.LoadScene("IK System 3D");
         GUILayout.EndHorizontal();
 
         GUILayout.Label("Afin de rendre plus visible le comportement des animations IK, vous pouvez modifier les paramètres ci-dessous.");
