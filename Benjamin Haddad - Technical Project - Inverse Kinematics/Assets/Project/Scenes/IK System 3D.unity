@@ -2124,7 +2124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 488ea79d27a362c4286f9979075ea7ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distanceAway: -2.5
+  distanceAway: -0.3640777
   distanceUp: 2.5838983
   distanceRight: 0
   smoothSpeed: 3
