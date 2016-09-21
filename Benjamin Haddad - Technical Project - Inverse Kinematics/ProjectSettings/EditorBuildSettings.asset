@@ -11,3 +11,5 @@ EditorBuildSettings:
     path: Assets/Project/Scenes/Foot IK.unity
   - enabled: 1
     path: Assets/Project/Scenes/Hand IK.unity
+  - enabled: 1
+    path: Assets/Project/Scenes/Look IK.unity
