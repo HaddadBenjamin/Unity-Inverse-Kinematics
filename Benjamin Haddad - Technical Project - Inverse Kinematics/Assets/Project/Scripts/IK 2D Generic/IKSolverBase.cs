@@ -4,14 +4,27 @@ using System.Collections;
 [ExecuteInEditMode]
 public class IKSolverBase : IKSolverAbst
 {
+    public bool EnableIK = true;
     public Transform target, endTransform;
 
     public IKController controller;
+    private Vector3 targetInitialPosition;
+
+    public void Start()
+    {
+        this.targetInitialPosition = this.target.position;
+    }
 
     public void LateUpdate()
     {
         if (this.Validate())
+        {
+            if (!this.EnableIK)
+                this.target.position = this.targetInitialPosition;
+
+            Debug.Log(this.EnableIK);
             this.UpdateIK();
+        }
     }
 
     public override void UpdateIK()

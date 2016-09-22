@@ -7,15 +7,20 @@ using System.Collections;
 public abstract class ABaseIKInformation : MonoBehaviour
 {
     #region Fields
+    [SerializeField]
+    private Light directionalLight;
+
     private AIK aIK;
     private ThirdPersonCamera myCamera;
+
     private bool enableIK = true;
+    public Action<bool> enableIKListener;
+
     private float cameraDistanceAway;
     private float cameraDistanceUp;
     private float cameraDistanceRight;
     private float lightIntensity;
-    [SerializeField]
-    private Light directionalLight;
+    
     private readonly Rect beginArea = new Rect(10.0f, 10.0f, 700.0f, 500.0f);
     #endregion
 
@@ -29,9 +34,13 @@ public abstract class ABaseIKInformation : MonoBehaviour
 
         set
         {
-            this.AIK.EnableIK = 
-                 enableIK = 
-                 value;
+            enableIK = value;
+
+            if (null != this.AIK)
+                this.AIK.EnableIK = this.EnableIK;
+
+            if (null != this.enableIKListener)
+                this.enableIKListener(this.EnableIK);
         }
     }
 
@@ -151,22 +160,27 @@ public abstract class ABaseIKInformation : MonoBehaviour
             SceneManager.LoadScene("Look IK");
         if (GUILayout.Button("IK 3D sans Animator"))
             SceneManager.LoadScene("IK System 3D");
+        if (GUILayout.Button("IK 2D"))
+            SceneManager.LoadScene("IK 2D Generic");
         GUILayout.EndHorizontal();
 
         GUILayout.Label("Afin de rendre plus visible le comportement des animations IK, vous pouvez modifier les paramètres ci-dessous.");
 
-        GUILayout.BeginHorizontal();
-        GUILayout.Label("Distance de la caméra par rapport au joueur.");
-        this.CameraDistanceAway = GUILayout.HorizontalSlider(this.CameraDistanceAway, -20.0f, 20.0f);
-        GUILayout.EndHorizontal();
-        GUILayout.BeginHorizontal();
-        GUILayout.Label("Distance up de la caméra par rapport au joueur.");
-        this.CameraDistanceUp = GUILayout.HorizontalSlider(this.CameraDistanceUp, 0.05f, 15.0f, GUILayout.Width(100.0f));
-        GUILayout.EndHorizontal();
-        GUILayout.BeginHorizontal();
-        GUILayout.Label("Distance right de la caméra par rapport au joueur.");
-        this.CameraDistanceRight = GUILayout.HorizontalSlider(this.CameraDistanceRight, -10.0f, 10.0f, GUILayout.Width(100.0f));
-        GUILayout.EndHorizontal();
+        if (null != this.myCamera)
+        {
+            GUILayout.BeginHorizontal();
+            GUILayout.Label("Distance de la caméra par rapport au joueur.");
+            this.CameraDistanceAway = GUILayout.HorizontalSlider(this.CameraDistanceAway, -20.0f, 20.0f);
+            GUILayout.EndHorizontal();
+            GUILayout.BeginHorizontal();
+            GUILayout.Label("Distance up de la caméra par rapport au joueur.");
+            this.CameraDistanceUp = GUILayout.HorizontalSlider(this.CameraDistanceUp, 0.05f, 15.0f, GUILayout.Width(100.0f));
+            GUILayout.EndHorizontal();
+            GUILayout.BeginHorizontal();
+            GUILayout.Label("Distance right de la caméra par rapport au joueur.");
+            this.CameraDistanceRight = GUILayout.HorizontalSlider(this.CameraDistanceRight, -10.0f, 10.0f, GUILayout.Width(100.0f));
+            GUILayout.EndHorizontal();
+        }
 
         GUILayout.BeginHorizontal();
         GUILayout.Label("Intensité de la lumière.");
@@ -180,13 +194,18 @@ public abstract class ABaseIKInformation : MonoBehaviour
     {
         this.AIK = GetComponent<AIK>();
 
-        this.EnableIK = this.AIK.EnableIK;
+        if (null != this.AIK)
+            this.EnableIK = this.AIK.EnableIK;
 
         this.MyCamera = Camera.main.GetComponent<ThirdPersonCamera>();
 
-        this.CameraDistanceAway = this.MyCamera.distanceAway;
-        this.CameraDistanceUp = this.MyCamera.distanceUp;
-        this.CameraDistanceRight = this.MyCamera.distanceRight;
+        if (null != this.myCamera)
+        {
+            this.CameraDistanceAway = this.MyCamera.distanceAway;
+            this.CameraDistanceUp = this.MyCamera.distanceUp;
+            this.CameraDistanceRight = this.MyCamera.distanceRight;
+        }
+
         this.LightIntensity = this.directionalLight.intensity;
     }
 
