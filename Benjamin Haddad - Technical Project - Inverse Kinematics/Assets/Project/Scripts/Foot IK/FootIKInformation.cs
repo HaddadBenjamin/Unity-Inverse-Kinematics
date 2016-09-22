@@ -9,8 +9,7 @@ public sealed class FootIKInformation : ABaseIKInformation
     {
         base.GUIInformation();
 
-        GUILayout.Label("Déplacez-vous sur les plateformes puis arrêtez-vous pour voir l'IK des pieds de votre personnage.");
-        GUILayout.Label("<b>Pour se déplacer :</b> AWSD ou les flèches directionnelles.");
+        GUILayout.Label("Move with QSZD or arrow directionnal to see better the foot IK of your character.");
     }
     #endregion
 }

@@ -26,36 +26,36 @@ public sealed class IK3DInformation : ABaseIKInformation
     {
         base.GUIInformation();
 
-        GUILayout.Label("Dans cette scène vous pouvez modifier le le comportement de l'IK en déplacant la cible du coude et de la main du personnage.");
+        GUILayout.Label("In this scene you can modify the IK behaviour by moving the elbow and hand target of your character.");
 
         GUILayout.BeginHorizontal();
-        GUILayout.Label("Valeur de transition de l'IK.");
+        GUILayout.Label("IK Weight.");
         this.Transition = GUILayout.HorizontalSlider(this.Transition, 0.0f, 1.0f);
         GUILayout.EndHorizontal();
 
         GUILayout.BeginHorizontal();
-        GUILayout.Label("Position x de la cible de la main.");
+        GUILayout.Label("Hand target position x.");
         this.handTarget.SetLocalPositionX(GUILayout.HorizontalSlider(this.handTarget.localPosition.x, -3.0f, .0f));
         GUILayout.EndHorizontal();
         GUILayout.BeginHorizontal();
-        GUILayout.Label("Position y de la cible de la main.");
+        GUILayout.Label("Hand target position y.");
         this.handTarget.SetLocalPositionY(GUILayout.HorizontalSlider(this.handTarget.localPosition.y, 0.0f, 3.0f));
         GUILayout.EndHorizontal();
         GUILayout.BeginHorizontal();
-        GUILayout.Label("Position z de la cible de la main.");
+        GUILayout.Label("Hand target position z.");
         this.handTarget.SetLocalPositionZ(GUILayout.HorizontalSlider(this.handTarget.localPosition.z, -3.0f, 3.0f));
         GUILayout.EndHorizontal();
 
         GUILayout.BeginHorizontal();
-        GUILayout.Label("Position x de la cible du coude.");
+        GUILayout.Label("Elbow target position x.");
         this.elbowTarget.SetLocalPositionX(GUILayout.HorizontalSlider(this.elbowTarget.localPosition.x, -3.0f, .0f));
         GUILayout.EndHorizontal();
         GUILayout.BeginHorizontal();
-        GUILayout.Label("Position y de la cible du coude.");
+        GUILayout.Label("Elbow target position y.");
         this.elbowTarget.SetLocalPositionY(GUILayout.HorizontalSlider(this.elbowTarget.localPosition.y, 0.0f, 3.0f));
         GUILayout.EndHorizontal();
         GUILayout.BeginHorizontal();
-        GUILayout.Label("Position z de la cible du coude.");
+        GUILayout.Label("Elbow target position z.");
         this.elbowTarget.SetLocalPositionZ(GUILayout.HorizontalSlider(this.elbowTarget.localPosition.z, -3.0f, 3.0f));
         GUILayout.EndHorizontal();
     }

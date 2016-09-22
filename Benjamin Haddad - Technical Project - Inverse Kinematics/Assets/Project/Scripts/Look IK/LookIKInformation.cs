@@ -132,41 +132,41 @@ public sealed class LookIKInformation : ABaseIKInformation
     {
         base.GUIInformation();
 
-        GUILayout.Label("Dans cette scène, votre personnage regarde une balle qui se déplace et vous pouvez modifier comment il la regarde.");
+        GUILayout.Label("In this scene your character is looking a ball in movement and you can modify how your character is looking it.");
 
         GUILayout.BeginHorizontal();
-        GUILayout.Label("Position de la balle sur l'axe x.");
+        GUILayout.Label("Ball position x.");
         this.BallRightSpeed = GUILayout.HorizontalSlider(this.BallRightSpeed, 0.0f, 1.0F);
         GUILayout.EndHorizontal();
 
         GUILayout.BeginHorizontal();
-        GUILayout.Label("Position de la balle sur l'axe y.");
+        GUILayout.Label("Ball position y.");
         this.BallUpSpeed = GUILayout.HorizontalSlider(this.BallUpSpeed, 0.0f, 0.325f);
         GUILayout.EndHorizontal();
 
 
         GUILayout.BeginHorizontal();
-        GUILayout.Label("Poids de l'IK.");
+        GUILayout.Label("IK weight.");
         this.Weight = GUILayout.HorizontalSlider(this.Weight, 0.0f, 1.0f);
         GUILayout.EndHorizontal();
 
         GUILayout.BeginHorizontal();
-        GUILayout.Label("Poids de l'IK du corps.");
+        GUILayout.Label("Body IK eeight.");
         this.BodyWeight = GUILayout.HorizontalSlider(this.BodyWeight, 0.0f, 1.0f);
         GUILayout.EndHorizontal();
 
         GUILayout.BeginHorizontal();
-        GUILayout.Label("Poids de l'IK de la tête.");
+        GUILayout.Label("Head IK weight.");
         this.HeadWeight = GUILayout.HorizontalSlider(this.HeadWeight, 0.0f, 1.0f);
         GUILayout.EndHorizontal();
 
         GUILayout.BeginHorizontal();
-        GUILayout.Label("Poids de l'IK des yeux.");
+        GUILayout.Label("Eyes IK weight.");
         this.EyesWeight = GUILayout.HorizontalSlider(this.EyesWeight, 0.0f, 1.0f);
         GUILayout.EndHorizontal();
 
         GUILayout.BeginHorizontal();
-        GUILayout.Label("Poids du clamp de l'IK.");
+        GUILayout.Label("Clamp IK.");
         this.ClampWeight = GUILayout.HorizontalSlider(this.ClampWeight, 0.0f, 1.0f);
         GUILayout.EndHorizontal();
     }

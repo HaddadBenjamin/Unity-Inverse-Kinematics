@@ -4,7 +4,7 @@ using System.Collections;
 public static class MathHelper
 {
     /// <summary>
-    /// Retourne l'angle entre 2 vecteurs compris entre [-180 et 180].
+    /// Calcul l'angle entre 2 vecteurs compris entre [-180 et 180].
     /// </summary>
     /// <returns></returns>
     public static float SignedAngle(Vector3 a, Vector3 b)

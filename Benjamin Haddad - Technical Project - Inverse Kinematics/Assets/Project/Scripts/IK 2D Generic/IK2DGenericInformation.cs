@@ -21,11 +21,11 @@ public sealed class IK2DGenericInformation : ABaseIKInformation
         base.GUIInformation();
 
         GUILayout.BeginHorizontal();
-        GUILayout.Label("Position x de la cible.");
+        GUILayout.Label("Target position x.");
         this.target.SetLocalPositionX(GUILayout.HorizontalSlider(this.target.localPosition.x, -3.0f, 3.0f));
         GUILayout.EndHorizontal();
         GUILayout.BeginHorizontal();
-        GUILayout.Label("Position y de la cible.");
+        GUILayout.Label("Target position y.");
         this.target.SetLocalPositionY(GUILayout.HorizontalSlider(this.target.localPosition.y, -3.0f, 3.0f));
         GUILayout.EndHorizontal();
     }

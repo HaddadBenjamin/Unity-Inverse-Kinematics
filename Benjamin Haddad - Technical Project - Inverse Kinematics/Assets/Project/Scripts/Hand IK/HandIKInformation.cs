@@ -8,7 +8,7 @@ public sealed class HandIKInformation : ABaseIKInformation
     {
         base.GUIInformation();
 
-        GUILayout.Label("Activer / désactiver l'IK pour tenir l'objet en face de votre personnage.");
+        GUILayout.Label("Enable / Disable IK to hold the item in front of your character.");
     }
     #endregion
 }

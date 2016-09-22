@@ -13,7 +13,9 @@ public sealed class IKController : MonoBehaviour
     {
         get
         {
-            return 0 > this.myTransform.localScale.x;
+            return (null!= this.myTransform) ?
+                    0 > this.myTransform.localScale.x :
+                    0 > transform.localScale.x;
         }
     }
 

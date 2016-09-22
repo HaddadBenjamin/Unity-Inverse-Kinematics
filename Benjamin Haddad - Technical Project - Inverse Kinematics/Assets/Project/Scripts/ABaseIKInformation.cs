@@ -146,44 +146,44 @@ public abstract class ABaseIKInformation : MonoBehaviour
     #region Virtual Behaviour
     protected virtual void GUIInformation()
     {
-        this.EnableIK = GUILayout.Toggle(this.EnableIK, "Activer / désactiver l'IK.");
+        this.EnableIK = GUILayout.Toggle(this.EnableIK, "Enable / Disable IK.");
 
         GUILayout.BeginHorizontal();
-        GUILayout.Label("Charger une scène.");
-        if (GUILayout.Button("La scène courante"))
+        GUILayout.Label("Load scene.");
+        if (GUILayout.Button("Current scene"))
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        if (GUILayout.Button("IK des pieds"))
+        if (GUILayout.Button("Foot IK"))
             SceneManager.LoadScene("Foot IK");
-        if (GUILayout.Button("IK des mains"))
+        if (GUILayout.Button("Hand IK"))
             SceneManager.LoadScene("Hand IK");
-        if (GUILayout.Button("IK du regard"))
+        if (GUILayout.Button("Look IK"))
             SceneManager.LoadScene("Look IK");
-        if (GUILayout.Button("IK 3D sans Animator"))
+        if (GUILayout.Button("3D IK without animator"))
             SceneManager.LoadScene("IK System 3D");
-        if (GUILayout.Button("IK 2D"))
+        if (GUILayout.Button("IK 2D without animator"))
             SceneManager.LoadScene("IK 2D Generic");
         GUILayout.EndHorizontal();
 
-        GUILayout.Label("Afin de rendre plus visible le comportement des animations IK, vous pouvez modifier les paramètres ci-dessous.");
+        GUILayout.Label("If you want to see better the behaviour of IK animations you should modify the following parameters.");
 
         if (null != this.myCamera)
         {
             GUILayout.BeginHorizontal();
-            GUILayout.Label("Distance de la caméra par rapport au joueur.");
+            GUILayout.Label("Camera distance from player.");
             this.CameraDistanceAway = GUILayout.HorizontalSlider(this.CameraDistanceAway, -20.0f, 20.0f);
             GUILayout.EndHorizontal();
             GUILayout.BeginHorizontal();
-            GUILayout.Label("Distance up de la caméra par rapport au joueur.");
+            GUILayout.Label("Camera up distance from player.");
             this.CameraDistanceUp = GUILayout.HorizontalSlider(this.CameraDistanceUp, 0.05f, 15.0f, GUILayout.Width(100.0f));
             GUILayout.EndHorizontal();
             GUILayout.BeginHorizontal();
-            GUILayout.Label("Distance right de la caméra par rapport au joueur.");
+            GUILayout.Label("Camera right distance from player.");
             this.CameraDistanceRight = GUILayout.HorizontalSlider(this.CameraDistanceRight, -10.0f, 10.0f, GUILayout.Width(100.0f));
             GUILayout.EndHorizontal();
         }
 
         GUILayout.BeginHorizontal();
-        GUILayout.Label("Intensité de la lumière.");
+        GUILayout.Label("Light intensity.");
         this.LightIntensity = GUILayout.HorizontalSlider(this.LightIntensity, 0.0f, 2.0f);
         GUILayout.EndHorizontal();
     }
