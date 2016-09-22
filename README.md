@@ -2,6 +2,8 @@
 
 Dans ce projet je montre différent cas d'utilisation des animations en kinematics sur Unity en C# avec et sans animator.
 
+Voici le résultat obtenu après 4 jours de développement et de recherche.
+
 ![Alt text](http://i.imgur.com/UWMT8p7.png "Avec l'IK des pieds.")
 ![Alt text](http://i.imgur.com/aJoDxb0.png "Avec l'IK des mains.")
 ![Alt text](http://i.imgur.com/iCMJiyJ.png "Avec l'IK du regard.")
