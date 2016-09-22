@@ -6,7 +6,11 @@ public sealed class IK3D : AIK
 {
     #region Fields
     [SerializeField]
-    private Transform upperArm, forearm, hand, handTarget, elbowTarget;
+    private Transform upperArm = null,
+                      forearm = null,
+                      hand = null,
+                      handTarget = null,
+                      elbowTarget = null ;
     [SerializeField]
     private bool debug = true;
     [SerializeField]

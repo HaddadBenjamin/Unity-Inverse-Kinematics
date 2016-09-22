@@ -6,7 +6,8 @@ public sealed class IK3DInformation : ABaseIKInformation
     private IK3D myOwnIK;
     private float transition;
     [SerializeField]
-    private Transform elbowTarget, handTarget;
+    private Transform elbowTarget = null,
+                      handTarget = null;
 
     public float Transition
     {

@@ -5,7 +5,7 @@ public sealed class IKController : MonoBehaviour
 {
     #region Fields
     public AIKSolver[] chains;
-    private Transform myTransform;
+    private Transform myTransform = null;
     #endregion
 
     #region Properties

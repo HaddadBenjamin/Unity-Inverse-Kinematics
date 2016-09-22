@@ -10,9 +10,10 @@ public sealed class IKFirstNode : AIKSolver
     [SerializeField]
     private IKController controller;
     [SerializeField]
-    private Transform target, endTransform;
+    private Transform target = null, 
+                      endTransform = null;
 
-    private Transform myTransform;
+    private Transform myTransform = null;
 
     private Vector3 targetInitialPosition;
     #endregion
