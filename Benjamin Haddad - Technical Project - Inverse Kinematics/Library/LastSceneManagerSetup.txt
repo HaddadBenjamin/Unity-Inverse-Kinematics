@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Project/Scenes/Look IK.unity
+- path: Assets/Project/Scenes/IK System 3D.unity
   isLoaded: 1
   isActive: 1

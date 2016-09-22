@@ -1001,7 +1001,7 @@ MonoBehaviour:
   upperArm: {fileID: 1152794673}
   forearm: {fileID: 1312732755}
   hand: {fileID: 655528403}
-  handTarget: {fileID: 0}
+  target: {fileID: 524296124}
   elbowTarget: {fileID: 988424439}
   debug: 1
   transition: 1
@@ -1775,6 +1775,43 @@ Transform:
   m_Children: []
   m_Father: {fileID: 996394881}
   m_RootOrder: 20
+--- !u!1 &734819559 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100010, guid: 035ab788dd237544a973c6f74e2bbdfe, type: 2}
+  m_PrefabInternal: {fileID: 1418895993}
+--- !u!114 &734819560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 734819559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172270db5c151864ab3c0c15c5d04b2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  directionalLight: {fileID: 1611142685}
+  elbowTarget: {fileID: 988424439}
+  handTarget: {fileID: 524296124}
+--- !u!114 &734819562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 734819559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c69a1c252957e2c44a6da09c59d1ec15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enableIK: 1
+  upperArm: {fileID: 1152794673}
+  forearm: {fileID: 1312732755}
+  hand: {fileID: 655528403}
+  target: {fileID: 524296124}
+  elbowTarget: {fileID: 988424439}
+  debug: 1
+  transition: 1
 --- !u!1 &766793817
 GameObject:
   m_ObjectHideFlags: 0
@@ -3377,6 +3414,81 @@ Transform:
   - {fileID: 2056667179}
   m_Father: {fileID: 403491728}
   m_RootOrder: 0
+--- !u!1001 &1418895993
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400010, guid: 035ab788dd237544a973c6f74e2bbdfe, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400010, guid: 035ab788dd237544a973c6f74e2bbdfe, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400010, guid: 035ab788dd237544a973c6f74e2bbdfe, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400010, guid: 035ab788dd237544a973c6f74e2bbdfe, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400010, guid: 035ab788dd237544a973c6f74e2bbdfe, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400010, guid: 035ab788dd237544a973c6f74e2bbdfe, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400010, guid: 035ab788dd237544a973c6f74e2bbdfe, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400010, guid: 035ab788dd237544a973c6f74e2bbdfe, type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: 035ab788dd237544a973c6f74e2bbdfe, type: 2}
+      propertyPath: upperArm
+      value: 
+      objectReference: {fileID: 1152794673}
+    - target: {fileID: 11400002, guid: 035ab788dd237544a973c6f74e2bbdfe, type: 2}
+      propertyPath: forearm
+      value: 
+      objectReference: {fileID: 1312732755}
+    - target: {fileID: 11400002, guid: 035ab788dd237544a973c6f74e2bbdfe, type: 2}
+      propertyPath: hand
+      value: 
+      objectReference: {fileID: 655528403}
+    - target: {fileID: 11400002, guid: 035ab788dd237544a973c6f74e2bbdfe, type: 2}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 524296124}
+    - target: {fileID: 11400002, guid: 035ab788dd237544a973c6f74e2bbdfe, type: 2}
+      propertyPath: elbowTarget
+      value: 
+      objectReference: {fileID: 988424439}
+    - target: {fileID: 11400002, guid: 035ab788dd237544a973c6f74e2bbdfe, type: 2}
+      propertyPath: IsEnabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100010, guid: 035ab788dd237544a973c6f74e2bbdfe, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: 035ab788dd237544a973c6f74e2bbdfe, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 11400002, guid: 035ab788dd237544a973c6f74e2bbdfe, type: 2}
+  m_ParentPrefab: {fileID: 100100000, guid: 035ab788dd237544a973c6f74e2bbdfe, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1441312797
 GameObject:
   m_ObjectHideFlags: 0
@@ -3392,69 +3504,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1441496419
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1441496422}
-  - 114: {fileID: 1441496421}
-  - 114: {fileID: 1441496420}
-  m_Layer: 0
-  m_Name: IK System 3D Without Animator
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1441496420
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1441496419}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c69a1c252957e2c44a6da09c59d1ec15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enableIK: 1
-  upperArm: {fileID: 1152794673}
-  forearm: {fileID: 1312732755}
-  hand: {fileID: 655528403}
-  handTarget: {fileID: 524296124}
-  elbowTarget: {fileID: 988424439}
-  debug: 1
-  transition: 1
---- !u!114 &1441496421
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1441496419}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 172270db5c151864ab3c0c15c5d04b2b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  directionalLight: {fileID: 1611142685}
-  elbowTarget: {fileID: 988424439}
-  handTarget: {fileID: 524296124}
---- !u!4 &1441496422
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1441496419}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
 --- !u!1 &1443554396
 GameObject:
   m_ObjectHideFlags: 0

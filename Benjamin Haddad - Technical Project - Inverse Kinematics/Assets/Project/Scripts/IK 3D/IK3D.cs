@@ -6,7 +6,7 @@ public class IK3D : AIK
 {
     #region Fields
     [SerializeField]
-    private Transform upperArm, forearm, hand, target, elbowTarget;
+    private Transform upperArm, forearm, hand, handTarget, elbowTarget;
     [SerializeField]
     private bool debug = true;
     [SerializeField]
@@ -42,7 +42,7 @@ public class IK3D : AIK
         this.upperArmStartRotation = this.upperArm.rotation;
         this.forearmStartRotation = this.forearm.rotation;
         this.handStartRotation = this.hand.rotation;
-        this.targetRelativeStartPosition = this.target.position - this.upperArm.position;
+        this.targetRelativeStartPosition = this.handTarget.position - this.upperArm.position;
         this.elbowTargetRelativeStartPosition = this.elbowTarget.position - this.upperArm.position;
 
         this.upperArmAxisCorrection = new GameObject("upperArmAxisCorrection");
@@ -60,7 +60,7 @@ public class IK3D : AIK
                   forearmLength = Vector3.Distance(this.forearm.position, this.hand.position),
                   armLength = upperArmLength + forearmLength,
                   hypotenuse = upperArmLength,
-                  targetDistance = Vector3.Distance(this.upperArm.position, this.target.position);
+                  targetDistance = Vector3.Distance(this.upperArm.position, this.handTarget.position);
 
             targetDistance = Mathf.Min(targetDistance, armLength - 0.0001f); //Do not allow target distance be further away than the arm's length.
                                                                              //float adjacent = (targetDistance * hypotenuse) / armLength;
@@ -69,7 +69,7 @@ public class IK3D : AIK
                   ikAngle = Mathf.Acos(adjacent / hypotenuse) * Mathf.Rad2Deg;
 
             //Store pre-ik info.
-            Vector3 targetPosition = this.target.position,
+            Vector3 targetPosition = this.handTarget.position,
                     elbowTargetPosition = this.elbowTarget.position;
         
             Transform upperArmParent = this.upperArm.parent,
@@ -88,7 +88,7 @@ public class IK3D : AIK
                        handRotation = this.hand.rotation;
 
             //Reset arm.
-            this.target.position = this.targetRelativeStartPosition + this.upperArm.position;
+            this.handTarget.position = this.targetRelativeStartPosition + this.upperArm.position;
             this.elbowTarget.position = this.elbowTargetRelativeStartPosition + this.upperArm.position;
             this.upperArm.rotation = this.upperArmStartRotation;
             this.forearm.rotation = this.forearmStartRotation;
@@ -115,17 +115,17 @@ public class IK3D : AIK
             this.hand.parent = this.handAxisCorrection.transform;
 
             //Reset targets.
-            this.target.position = targetPosition;
+            this.handTarget.position = targetPosition;
             this.elbowTarget.position = elbowTargetPosition;
 
             //Apply rotation for temporary game objects.
-            this.upperArmAxisCorrection.transform.LookAt(this.target, this.elbowTarget.position - this.upperArmAxisCorrection.transform.position);
+            this.upperArmAxisCorrection.transform.LookAt(this.handTarget, this.elbowTarget.position - this.upperArmAxisCorrection.transform.position);
 
             Vector3 eulerAngles = this.upperArmAxisCorrection.transform.localRotation.eulerAngles;
 
             this.upperArmAxisCorrection.transform.localEulerAngles = new Vector3(eulerAngles.x - ikAngle, eulerAngles.y, eulerAngles.z);
-            this.forearmAxisCorrection.transform.LookAt(this.target, this.elbowTarget.position - this.upperArmAxisCorrection.transform.position);
-            this.handAxisCorrection.transform.rotation = this.target.rotation;
+            this.forearmAxisCorrection.transform.LookAt(this.handTarget, this.elbowTarget.position - this.upperArmAxisCorrection.transform.position);
+            this.handAxisCorrection.transform.rotation = this.handTarget.rotation;
 
             //Restore limbs.
             this.upperArm.parent = upperArmParent;
@@ -153,7 +153,7 @@ public class IK3D : AIK
             if (this.debug)
             {
                 Debug.DrawLine(this.forearm.position, this.elbowTarget.position, Color.yellow);
-                Debug.DrawLine(this.upperArm.position, this.target.position, Color.red);
+                Debug.DrawLine(this.upperArm.position, this.handTarget.position, Color.red);
             }
         }
     }
