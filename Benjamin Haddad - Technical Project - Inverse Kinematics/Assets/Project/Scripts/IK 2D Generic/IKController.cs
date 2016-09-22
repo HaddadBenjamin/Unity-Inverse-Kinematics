@@ -1,17 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class IKController : MonoBehaviour
+public sealed class IKController : MonoBehaviour
 {
-    public IKSolverAbst[] chains;
+    #region Fields
+    public AIKSolver[] chains;
+    private Transform myTransform;
+    #endregion
 
-    // Ces 2 méthodes devrait stoquer et utiliser le transform.
-    // Détermine juste si l'objet se situe à gauche ou à droite
-    public bool Inverse
+    #region Properties
+    public bool IsNegativeLocalScale
     {
         get
         {
-            return 0 > transform.localScale.x;
+            return 0 > this.myTransform.localScale.x;
         }
     }
 
@@ -19,7 +21,15 @@ public class IKController : MonoBehaviour
     {
         get
         {
-            return transform.localPosition;
+            return this.myTransform.localPosition;
         }
     }
+    #endregion
+
+    #region  Untiy Behaviour
+    void Start()
+    {
+        this.myTransform = transform;
+    }
+    #endregion
 }

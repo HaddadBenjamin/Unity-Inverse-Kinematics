@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class IK2DGenericInformation : ABaseIKInformation
+public sealed class IK2DGenericInformation : ABaseIKInformation
 {
     [SerializeField]
     private Transform target;
     [SerializeField]
-    private IKSolverBase IK;
+    private IKFirstNode IK;
 
     void Start()
     {

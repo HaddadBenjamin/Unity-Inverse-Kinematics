@@ -248,10 +248,6 @@ MonoBehaviour:
   target: {fileID: 1001556743}
   endTransform: {fileID: 1031890987}
   controller: {fileID: 1642138181}
---- !u!4 &948033900 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 400000, guid: 8f8d2ef94975d4ebb8995c2ebe18da88, type: 2}
-  m_PrefabInternal: {fileID: 168197579}
 --- !u!1 &1001556742
 GameObject:
   m_ObjectHideFlags: 0
@@ -599,15 +595,15 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1642138179}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: 0.00002621549, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 197519632}
   - {fileID: 1001556743}
-  m_Father: {fileID: 948033900}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
 --- !u!114 &1642138181
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BallMovement : MonoBehaviour
+public sealed class BallMovement : MonoBehaviour
 {
     #region Fields
     [SerializeField]

@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class ThirdPersonCamera : MonoBehaviour
+public sealed class ThirdPersonCamera : MonoBehaviour
 {
     #region Fields
     public float distanceAway;			

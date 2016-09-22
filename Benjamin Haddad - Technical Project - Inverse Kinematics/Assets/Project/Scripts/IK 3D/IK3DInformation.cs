@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class IK3DInformation : ABaseIKInformation
+public sealed class IK3DInformation : ABaseIKInformation
 {
     private IK3D myOwnIK;
     private float transition;

@@ -2,7 +2,7 @@
 using System.Collections;
 using System;
 
-public class IK3D : AIK
+public sealed class IK3D : AIK
 {
     #region Fields
     [SerializeField]
