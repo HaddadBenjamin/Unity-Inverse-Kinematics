@@ -5,6 +5,7 @@ public static class MathHelper
 {
     /// <summary>
     /// Calcul l'angle entre 2 vecteurs compris entre [-180 et 180].
+    /// Signed signifie la valeur de l'angle de retour (négatif ou positif) alors qu'unsigned signifie que l'angle sera forcèment positif.
     /// </summary>
     /// <returns></returns>
     public static float SignedAngle(Vector3 a, Vector3 b)

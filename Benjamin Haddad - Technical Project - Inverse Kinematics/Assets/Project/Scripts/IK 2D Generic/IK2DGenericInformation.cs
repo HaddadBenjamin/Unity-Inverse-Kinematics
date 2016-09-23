@@ -6,7 +6,7 @@ public sealed class IK2DGenericInformation : ABaseIKInformation
     [SerializeField]
     private Transform target;
     [SerializeField]
-    private IKFirstNode IK;
+    private IKFirstJoint IK;
 
     void Start()
     {
