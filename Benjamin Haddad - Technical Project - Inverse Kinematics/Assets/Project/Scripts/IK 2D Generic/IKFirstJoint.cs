@@ -92,7 +92,7 @@ public sealed class IKFirstJoint : MonoBehaviour
     {
         Vector2 toTarget = target.position - jointToRotate.position;
         Vector2 toEnd = endTransform.position - jointToRotate.position; // itération 1 : dernier noeud, itération 2 : avant dernier noeud...
-        float angle = MathHelper.SignedAngle(toEnd, toTarget); // Obtient un angle signé : compris entre [-180 et 180]
+        float angle = toEnd.SignedAngle(toTarget); // Obtient un angle signé : compris entre [-180 et 180]
 
         if (this.DoesLocalScaleIsNegative())
             angle *= -1.0f; // Ajuste l'angle au controlleur.
