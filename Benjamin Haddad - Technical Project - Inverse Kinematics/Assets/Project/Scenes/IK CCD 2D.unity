@@ -181,9 +181,9 @@ GameObject:
   - 114: {fileID: 197519634}
   - 114: {fileID: 197519635}
   m_Layer: 0
-  m_Name: IK First Joint
+  m_Name: IK CCD First Joint
   m_TagString: Untagged
-  m_Icon: {fileID: 7882823752137805990, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -193,7 +193,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 197519631}
-  m_LocalRotation: {x: 0, y: 0, z: 0.024964513, w: -0.9996883}
+  m_LocalRotation: {x: 0, y: 0, z: 0.0007407786, w: 0.99999976}
   m_LocalPosition: {x: -0.868, y: -0.00004551009, z: 1.81}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -273,7 +273,7 @@ GameObject:
   m_Layer: 0
   m_Name: IK Target
   m_TagString: Untagged
-  m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -283,8 +283,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1001556742}
-  m_LocalRotation: {x: -0, y: -0, z: -0.070241705, w: 0.99753004}
-  m_LocalPosition: {x: 3.1697593, y: -0.57152194, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.398, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -312,7 +312,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1024610224}
-  m_LocalRotation: {x: -0, y: -0, z: 0.07645707, w: 0.99707294}
+  m_LocalRotation: {x: -0, y: -0, z: -0.0071669756, w: -0.9999743}
   m_LocalPosition: {x: 0.6, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -482,7 +482,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1560187160}
-  m_LocalRotation: {x: -0, y: 0, z: 0.10610728, w: -0.9943547}
+  m_LocalRotation: {x: -0, y: -0, z: 0.0046922425, w: -0.99998903}
   m_LocalPosition: {x: 0.6, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

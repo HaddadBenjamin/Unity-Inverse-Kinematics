@@ -2,13 +2,11 @@
 using System.Collections;
 
 [ExecuteInEditMode]
-public sealed class IKFirstJoint : MonoBehaviour
+public sealed class IKCCDFirstJoint : MonoBehaviour
 {
     #region Fields
     [SerializeField]
     private bool enableIK = true;
-    //[SerializeField]
-    //private IKController controller;
     [SerializeField]
     private Transform target = null, 
                       endTransform = null;
@@ -41,14 +39,14 @@ public sealed class IKFirstJoint : MonoBehaviour
         this.targetInitialPosition = this.target.position;
     }
 
-    public void LateUpdate()
+    private void LateUpdate()
     {
         if (this.Validate())
         {
             if (!this.EnableIK)
                 this.target.position = this.targetInitialPosition;
 
-            this.IKCyclicCoordinateDescentAlgorithm();
+            this.IKCCDAlgorithm();
         }
     }
     #endregion
@@ -56,8 +54,12 @@ public sealed class IKFirstJoint : MonoBehaviour
     #region Intern Behaviour
     /// <summary>
     /// Tourne les joints en partant du dernier joint jusqu'au premier.
+    /// Ici, une optimisation est possible en stoquant tous les joints partant du dernier jusqu'au premier, cette méthode pourrait être appeler dans l'Awake.
+    /// Ceci permettrait d'éviter de faire un transform.parent qui est un équivalent à un GetComponent<Transform> et par conséquent, il serai plus rapide
+    /// de parcourir ce tableau de joints que le code ci-dessous.
+    /// Je ne les pas fait de sorte à car ceci complixifierai le code et que je ne souhaitait te laisser que l'essentiel de mon code. (Cordialement).
     /// </summary>
-    private void IKCyclicCoordinateDescentAlgorithm()
+    private void IKCCDAlgorithm()
     {
         Transform joint = this.endTransform.parent;
 
@@ -92,15 +94,21 @@ public sealed class IKFirstJoint : MonoBehaviour
     {
         Vector2 toTarget = target.position - jointToRotate.position;
         Vector2 toEnd = endTransform.position - jointToRotate.position; // itération 1 : dernier noeud, itération 2 : avant dernier noeud...
+
+        // Calcul de l'angle du joint.
         float angle = toEnd.SignedAngle(toTarget); // Obtient un angle signé : compris entre [-180 et 180]
-
         if (this.DoesLocalScaleIsNegative())
-            angle *= -1.0f; // Ajuste l'angle au controlleur.
-
+            angle *= -1.0f; // Permet juste d'ajuster le sens de l'angle.
         angle = -(angle - jointToRotate.eulerAngles.z); // Ajuste l'angle en fonction de l'angle courant Z.
-        jointToRotate.rotation = Quaternion.Euler(0.0f, 0.0f, angle); // Met à jour l'angle.
+
+        // Met à jour l'angle.
+        jointToRotate.rotation = Quaternion.Euler(0.0f, 0.0f, angle);
     }
 
+    /// <summary>
+    /// Permet juste de déterminer
+    /// </summary>
+    /// <returns></returns>
     private bool DoesLocalScaleIsNegative()
     {
         return 0 > this.myTransform.localScale.x;

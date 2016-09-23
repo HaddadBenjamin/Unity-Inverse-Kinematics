@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Project/Scenes/IK 2D Generic.unity
+- path: Assets/Project/Scenes/IK CCD 2D.unity
   isLoaded: 1
   isActive: 1

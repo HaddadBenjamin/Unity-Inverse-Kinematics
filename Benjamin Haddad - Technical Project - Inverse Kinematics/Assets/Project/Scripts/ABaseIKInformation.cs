@@ -160,8 +160,8 @@ public abstract class ABaseIKInformation : MonoBehaviour
             SceneManager.LoadScene("Look IK");
         if (GUILayout.Button("3D IK without animator"))
             SceneManager.LoadScene("IK System 3D");
-        if (GUILayout.Button("IK 2D without animator"))
-            SceneManager.LoadScene("IK 2D Generic");
+        if (GUILayout.Button("IK CCD 2D without animator"))
+            SceneManager.LoadScene("IK CCD 2D");
         GUILayout.EndHorizontal();
 
         GUILayout.Label("If you want to see better the behaviour of IK animations you should modify the following parameters.");
