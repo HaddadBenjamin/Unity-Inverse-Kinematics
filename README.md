@@ -4,6 +4,8 @@ Dans ce projet je montre différent cas d'utilisation des animations en kinemati
 
 Voici le résultat obtenu après 4 jours de développement et de recherche.
 
+♦ Vidéo : https://www.youtube.com/watch?v=bggkyP-7EE0&feature=youtu.be
+
 ![Alt text](http://i.imgur.com/UWMT8p7.png "Avec l'IK des pieds.")
 ![Alt text](http://i.imgur.com/aJoDxb0.png "Avec l'IK des mains.")
 ![Alt text](http://i.imgur.com/iCMJiyJ.png "Avec l'IK du regard.")
