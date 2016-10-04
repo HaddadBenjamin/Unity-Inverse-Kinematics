@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Project/Scenes/IK CCD 2D.unity
+- path: Assets/Project/Scenes/Analytic Two-Bone IK in 2D.unity
   isLoaded: 1
   isActive: 1

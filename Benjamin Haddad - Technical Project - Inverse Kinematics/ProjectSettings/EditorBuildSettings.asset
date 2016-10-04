@@ -15,7 +15,11 @@ EditorBuildSettings:
     path: Assets/Project/Scenes/Look IK.unity
   - enabled: 0
     path: Assets/Project/Scenes/My Own IK System.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Project/Scenes/IK 2D Generic.unity
   - enabled: 1
     path: Assets/Project/Scenes/IK System 3D.unity
+  - enabled: 1
+    path: Assets/Project/Scenes/Analytic Two-Bone IK in 2D.unity
+  - enabled: 1
+    path: Assets/Project/Scenes/IK CCD 2D.unity
