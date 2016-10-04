@@ -106,8 +106,7 @@ public class AnalyticTwoBoneIK2D : AIK
                                 x * (bone1Length + bone2Length * cosAngle2) + y * (bone2Length * sinAngle2)) *
                                 Mathf.Rad2Deg;
             #endregion
-            
-            Debug.LogFormat("Angle 1 : {0}, Angle 2 : {1}", this.AngleBone1, this.AngleBone2);
+            //Debug.LogFormat("Angle 1 : {0}, Angle 2 : {1}", this.AngleBone1, this.AngleBone2);
         }
     }
 
