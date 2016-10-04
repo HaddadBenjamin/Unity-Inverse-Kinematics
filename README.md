@@ -2,6 +2,8 @@
 
 Dans ce projet je montre différent cas d'utilisation des animations en kinematics sur Unity en C# avec et sans animator.
 
+Le projet est fourni avec une documentation et quelques screenshots.
+
 Voici le résultat obtenu après 4 jours de développement et de recherche.
 
 ♦ Vidéo : https://www.youtube.com/watch?v=bggkyP-7EE0&feature=youtu.be
