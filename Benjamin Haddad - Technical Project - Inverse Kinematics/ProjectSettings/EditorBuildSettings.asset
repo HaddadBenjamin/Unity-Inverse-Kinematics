@@ -22,4 +22,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Project/Scenes/Analytic Two-Bone IK in 2D.unity
   - enabled: 1
+    path: Assets/Project/Scenes/Analytic Two-Bone IK in 2D 2.unity
+  - enabled: 1
     path: Assets/Project/Scenes/IK CCD 2D.unity
