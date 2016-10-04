@@ -21,7 +21,7 @@ public abstract class ABaseIKInformation : MonoBehaviour
     private float cameraDistanceRight;
     private float lightIntensity;
     
-    private readonly Rect beginArea = new Rect(10.0f, 10.0f, 750.0f, 800.0f);
+    private readonly Rect beginArea = new Rect(10.0f, 10.0f, 840.0f, 800.0f);
     #endregion
 
     #region Properties
@@ -160,8 +160,8 @@ public abstract class ABaseIKInformation : MonoBehaviour
             SceneManager.LoadScene("Look IK");
         if (GUILayout.Button("3D IK without animator"))
             SceneManager.LoadScene("IK System 3D");
-        if (GUILayout.Button("IK CCD 2D"))
-            SceneManager.LoadScene("IK CCD 2D");
+        if (GUILayout.Button("IK Cyclic Cordinate Descent 2D"))
+            SceneManager.LoadScene("IK Cyclic Cordinate Descent 2D");
         if (GUILayout.Button("Analytic Two-Bone IK in 2D"))
             SceneManager.LoadScene("Analytic Two-Bone IK in 2D");
         GUILayout.EndHorizontal();
