@@ -21,7 +21,7 @@ public abstract class ABaseIKInformation : MonoBehaviour
     private float cameraDistanceRight;
     private float lightIntensity;
     
-    private readonly Rect beginArea = new Rect(10.0f, 10.0f, 840.0f, 800.0f);
+    private readonly Rect beginArea = new Rect(10.0f, 10.0f, 900.0f, 800.0f);
     #endregion
 
     #region Properties
