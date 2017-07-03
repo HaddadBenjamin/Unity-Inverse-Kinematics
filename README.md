@@ -6,7 +6,7 @@ Le projet est fourni avec une documentation et quelques screenshots.
 
 Voici le résultat obtenu après 4 jours de développement et de recherche.
 
-♦ Vidéo : https://www.youtube.com/watch?v=bggkyP-7EE0&feature=youtu.be
+♦ Vidéo : https://www.youtube.com/watch?v=4jVt-0NvKM0&t
 
 ![Alt text](http://i.imgur.com/UWMT8p7.png "Avec l'IK des pieds.")
 ![Alt text](http://i.imgur.com/aJoDxb0.png "Avec l'IK des mains.")
