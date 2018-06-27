@@ -1,7 +1,7 @@
 # Unity-Inverse-Kinematics
-
-Année d'étude : 3ème année.</br>
-Année du développement de ce projet : 2016.
+**Langage de programmation :** C#</br>
+**Année du développement de ce projet :** 2016.
+**Année d'étude :** 3ème année.</br>
 
 Dans ce projet je montre différent cas d'utilisation des animations en kinematics sur Unity en C# avec et sans animator.
 
