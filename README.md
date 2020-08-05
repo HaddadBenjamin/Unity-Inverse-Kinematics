@@ -2,12 +2,9 @@
 **Langage de programmation :** C#.</br>
 **Année de développement :** 2016.</br>
 **Année d'étude :** 3ème année.
+**Temps de réalisation :** 4 jours.
 
-Dans ce projet je montre différent cas d'utilisation des animations en kinematics sur Unity en C# avec et sans animator.
-
-Le projet est fourni avec une documentation et quelques screenshots.
-
-Voici le résultat obtenu après 4 jours de développement et de recherche.
+Réalisation de différentes scènes permettant de démontrer l'utilisation des animations en cinématique inverse (IK) d'Unity j'ai recodé un système d'IK 2D et 3D.
 
 ![Alt text](http://i.imgur.com/UWMT8p7.png "Avec l'IK des pieds.")
 ![Alt text](http://i.imgur.com/aJoDxb0.png "Avec l'IK des mains.")
@@ -22,4 +19,3 @@ Voici le résultat obtenu après 4 jours de développement et de recherche.
 ![Alt text](http://i.imgur.com/wDshHHD.png "Sans l'IK 3D sans animator.")
 ![Alt text](http://i.imgur.com/Kd4FbmU.png "Avec un IK 2D de Cyclic Cordinate Descent.")
 ![Alt text](http://i.imgur.com/DmZbJbz.png "Avec un IK 2D d'Analytic Two-Bone.")
-
